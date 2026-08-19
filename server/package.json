@@ -1,0 +1,28 @@
+{
+  "name": "moqueguasoft-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web + mini ERP/CMS de Moquegua Soft",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js",
+    "setup": "node scripts/setup.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.3.0",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "express-session": "^1.18.0",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.1",
+    "pdfkit": "^0.15.0",
+    "session-file-store": "^1.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="table-card">
+    <% rows.forEach(m => { %>
+    <div class="border-bottom py-3 <%= m.read ? '' : 'bg-light' %>">
+        <div class="d-flex justify-content-between">
+            <div>
+                <strong><%= m.name %></strong>
+                <span class="text-muted small ms-2"><%= m.email %><%= m.phone ? ' · ' + m.phone : '' %></span>
+                <% if (!m.read) { %><span class="badge bg-warning text-dark ms-2">Nuevo</span><% } %>
+            </div>
+            <small class="text-muted"><%= m.created_at %></small>
+        </div>
+        <% if (m.subject) { %><div class="fw-semibold mt-1"><%= m.subject %></div><% } %>
+        <p class="mb-2 mt-1"><%= m.message %></p>
+        <div class="d-flex gap-2">
+            <a href="mailto:<%= m.email %>" class="btn btn-sm btn-outline-secondary">Responder por correo</a>
+            <% if (!m.read) { %>
+            <form action="/admin/mensajes/<%= m.id %>/leido" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn btn-sm btn-outline-primary">Marcar leído</button>
+            </form>
+            <% } %>
+            <form action="/admin/mensajes/<%= m.id %>/eliminar" method="POST" onsubmit="return confirm('¿Eliminar este mensaje?');">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+            </form>
+        </div>
+    </div>
+    <% }) %>
+    <% if (!rows.length) { %><p class="text-center text-muted py-4">No hay mensajes de contacto todavía.</p><% } %>
+</div>
+
+<%- include('../partials/shell-end') %>

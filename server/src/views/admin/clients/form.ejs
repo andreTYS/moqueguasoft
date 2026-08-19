@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="table-card" style="max-width:640px;">
+    <form method="POST" action="<%= customer.id ? `/admin/clientes/${customer.id}/editar` : '/admin/clientes/nuevo' %>">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="mb-3">
+            <label class="form-label">Nombre *</label>
+            <input type="text" name="name" class="form-control" value="<%= customer.name || '' %>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Empresa</label>
+            <input type="text" name="company" class="form-control" value="<%= customer.company || '' %>">
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Correo</label>
+                <input type="email" name="email" class="form-control" value="<%= customer.email || '' %>">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="text" name="phone" class="form-control" value="<%= customer.phone || '' %>">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Dirección</label>
+            <input type="text" name="address" class="form-control" value="<%= customer.address || '' %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Notas</label>
+            <textarea name="notes" class="form-control" rows="3"><%= customer.notes || '' %></textarea>
+        </div>
+        <button class="btn btn-ms-primary">Guardar</button>
+        <a href="/admin/clientes" class="btn btn-outline-secondary">Cancelar</a>
+    </form>
+</div>
+
+<%- include('../partials/shell-end') %>

@@ -1,0 +1,44 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="row g-3 mb-4">
+    <% slides.forEach(s => { %>
+    <div class="col-md-6">
+        <div class="table-card">
+            <form method="POST" action="/admin/cms/slides/<%= s.id %>" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <img src="<%= s.image %>" class="w-100 mb-2" style="height:140px;object-fit:cover;border-radius:8px;" alt="">
+                <div class="mb-2"><input type="file" name="image" accept="image/*" class="form-control form-control-sm"></div>
+                <div class="mb-2"><input type="text" name="title" class="form-control form-control-sm" value="<%= s.title %>" placeholder="Título"></div>
+                <div class="mb-2"><input type="text" name="subtitle" class="form-control form-control-sm" value="<%= s.subtitle %>" placeholder="Subtítulo"></div>
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <label class="form-label mb-0 small">Orden</label>
+                    <input type="number" name="sort_order" class="form-control form-control-sm" style="width:80px;" value="<%= s.sort_order %>">
+                    <div class="form-check ms-auto">
+                        <input type="checkbox" name="active" class="form-check-input" id="active<%= s.id %>" <%= s.active ? 'checked' : '' %>>
+                        <label class="form-check-label small" for="active<%= s.id %>">Activo</label>
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-ms-primary">Guardar</button>
+                    <button class="btn btn-sm btn-outline-danger" formaction="/admin/cms/slides/<%= s.id %>/eliminar" onclick="return confirm('¿Eliminar este slide?');">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <% }) %>
+</div>
+
+<div class="table-card" style="max-width:480px;">
+    <h6 class="mb-3">Agregar slide</h6>
+    <form method="POST" action="/admin/cms/slides/nuevo" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="mb-2"><input type="file" name="image" accept="image/*" class="form-control form-control-sm"></div>
+        <div class="mb-2"><input type="text" name="title" class="form-control form-control-sm" placeholder="Título" required></div>
+        <div class="mb-2"><input type="text" name="subtitle" class="form-control form-control-sm" placeholder="Subtítulo"></div>
+        <div class="mb-2"><input type="number" name="sort_order" class="form-control form-control-sm" placeholder="Orden" value="0"></div>
+        <button class="btn btn-sm btn-ms-primary">Agregar</button>
+    </form>
+</div>
+
+<%- include('../partials/shell-end') %>

@@ -1,0 +1,46 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { pageHeaderTitle: 'Nosotros' }) %>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="/img/about-1.svg" class="img-fluid w-75 rounded" alt="" style="margin-bottom: 25%;">
+                    <img src="/img/about-2.svg" class="img-fluid w-50 rounded position-absolute bottom-0 end-0 border border-4 border-white" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h6 class="text-secondary text-uppercase">Quiénes somos</h6>
+                <h1 class="mb-4"><%= content.intro_title %></h1>
+                <p class="mb-4"><%= content.intro_body %></p>
+                <p class="mb-0"><strong>Nuestra misión:</strong> <%= content.mission %></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Nuestro equipo</h6>
+            <h1>Personas detrás de Moquegua Soft</h1>
+        </div>
+        <div class="row g-4">
+            <% team.forEach(t => { %>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item">
+                    <div class="team-img">
+                        <img src="<%= t.photo %>" class="img-fluid w-100 rounded-circle" alt="<%= t.name %>">
+                    </div>
+                    <h5 class="team-name"><%= t.name %></h5>
+                    <p class="text-secondary mb-0"><%= t.role %></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

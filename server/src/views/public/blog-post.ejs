@@ -1,0 +1,30 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { pageHeaderTitle: post.title }) %>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <img src="<%= post.image %>" class="img-fluid w-100 rounded mb-4" alt="<%= post.title %>">
+                <div class="blog-icon">
+                    <small><i class="fas fa-user"></i> <%= post.author %></small>
+                    <small><i class="fas fa-calendar-alt"></i> <%= new Date(post.published_at).toLocaleDateString('es-PE') %></small>
+                </div>
+                <h1 class="mb-4"><%= post.title %></h1>
+                <div><%- post.content %></div>
+            </div>
+            <div class="col-lg-4">
+                <h5 class="mb-4">Otras publicaciones</h5>
+                <% others.forEach(o => { %>
+                <a href="/blog/<%= o.slug %>" class="d-flex align-items-center mb-3 text-dark">
+                    <img src="<%= o.image %>" style="width:70px;height:70px;object-fit:cover;border-radius:8px;" class="me-3" alt="<%= o.title %>">
+                    <span><%= o.title %></span>
+                </a>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

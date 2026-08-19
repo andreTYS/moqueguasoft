@@ -1,0 +1,33 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { pageHeaderTitle: 'Equipo' }) %>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Nuestro equipo</h6>
+            <h1>Conoce a las personas de Moquegua Soft</h1>
+        </div>
+        <div class="row g-4">
+            <% team.forEach(t => { %>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item">
+                    <div class="team-img">
+                        <img src="<%= t.photo %>" class="img-fluid w-100 rounded-circle" alt="<%= t.name %>">
+                        <div class="team-img-icon">
+                            <% if (t.facebook) { %><a href="<%= t.facebook %>"><i class="fab fa-facebook-f"></i></a><% } %>
+                            <% if (t.twitter) { %><a href="<%= t.twitter %>"><i class="fab fa-twitter"></i></a><% } %>
+                            <% if (t.instagram) { %><a href="<%= t.instagram %>"><i class="fab fa-instagram"></i></a><% } %>
+                            <% if (t.linkedin) { %><a href="<%= t.linkedin %>"><i class="fab fa-linkedin-in"></i></a><% } %>
+                        </div>
+                    </div>
+                    <h5 class="team-name"><%= t.name %></h5>
+                    <p class="text-secondary mb-0"><%= t.role %></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

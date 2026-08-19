@@ -1,0 +1,88 @@
+<%- include('partials/head') %>
+<%- include('partials/shell-start') %>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-3 col-6">
+        <div class="stat-card">
+            <div class="text-muted small">Ingresos totales</div>
+            <div class="value">S/ <%= totalIncome.toFixed(2) %></div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card">
+            <div class="text-muted small">Gastos totales</div>
+            <div class="value">S/ <%= totalExpenses.toFixed(2) %></div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card">
+            <div class="text-muted small">Balance</div>
+            <div class="value" style="color: <%= balance >= 0 ? '#1a9e5c' : '#c0392b' %>">S/ <%= balance.toFixed(2) %></div>
+        </div>
+    </div>
+    <div class="col-md-3 col-6">
+        <div class="stat-card">
+            <div class="text-muted small">Mensajes sin leer</div>
+            <div class="value"><%= unreadMessages %></div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-6">
+        <div class="table-card">
+            <h6 class="mb-3">Ingresos vs. gastos (últimos meses)</h6>
+            <canvas id="chart" height="180"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="table-card">
+            <h6 class="mb-3">Resumen</h6>
+            <p class="mb-2"><i class="bi bi-people me-2 text-primary"></i><%= clientsCount %> clientes registrados</p>
+            <p class="mb-2"><i class="bi bi-kanban me-2 text-primary"></i><%= projectsCount %> proyectos</p>
+            <a href="/admin/ingresos/nuevo" class="btn btn-ms-primary btn-sm me-2 mt-2">+ Nuevo ingreso</a>
+            <a href="/admin/gastos/nuevo" class="btn btn-outline-secondary btn-sm mt-2">+ Nuevo gasto</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-card">
+    <h6 class="mb-3">Últimos ingresos</h6>
+    <div class="table-responsive">
+        <table class="table table-sm align-middle">
+            <thead><tr><th>Fecha</th><th>Concepto</th><th>Cliente</th><th class="text-end">Monto</th></tr></thead>
+            <tbody>
+                <% recentIncome.forEach(r => { %>
+                <tr>
+                    <td><%= r.income_date %></td>
+                    <td><%= r.concept %></td>
+                    <td><%= r.client_name || '—' %></td>
+                    <td class="text-end"><%= r.currency %> <%= r.amount.toFixed(2) %></td>
+                </tr>
+                <% }) %>
+                <% if (!recentIncome.length) { %><tr><td colspan="4" class="text-center text-muted">Sin registros aún.</td></tr><% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script>
+    const months = <%- JSON.stringify(monthly.map(m => m.ym)) %>;
+    const allMonths = Array.from(new Set([...months, ...<%- JSON.stringify(monthlyExpenses.map(m => m.ym)) %>])).sort();
+    const incomeMap = Object.fromEntries(<%- JSON.stringify(monthly.map(m => [m.ym, m.total])) %>);
+    const expenseMap = Object.fromEntries(<%- JSON.stringify(monthlyExpenses.map(m => [m.ym, m.total])) %>);
+    new Chart(document.getElementById('chart'), {
+        type: 'bar',
+        data: {
+            labels: allMonths,
+            datasets: [
+                { label: 'Ingresos', backgroundColor: '#0b2545', data: allMonths.map(m => incomeMap[m] || 0) },
+                { label: 'Gastos', backgroundColor: '#f2a71b', data: allMonths.map(m => expenseMap[m] || 0) },
+            ],
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } },
+    });
+</script>
+
+<%- include('partials/shell-end') %>

@@ -1,0 +1,201 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <% slides.forEach((slide, i) => { %>
+            <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                <img src="<%= slide.image %>" class="img-fluid" alt="<%= slide.title %>">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="carousel-content p-3 text-center" style="max-width: 700px;">
+                        <h1 class="display-4 text-white mb-3 animated slideInDown"><%= slide.title %></h1>
+                        <p class="text-white-50 mb-4 fs-5 animated slideInDown"><%= slide.subtitle %></p>
+                        <a href="/servicios" class="btn btn-secondary carousel-content-btn1 animated slideInLeft me-2">Nuestros servicios</a>
+                        <a href="/contacto" class="btn btn-outline-light carousel-content-btn2 animated slideInRight">Contáctanos</a>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+</div>
+<!-- Carousel End -->
+
+<!-- Counter Start -->
+<div class="container-fluid bg-primary py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="counter"><div class="counter-value" data-count="120">0</div><p class="text-white-50 mb-0">Proyectos completados</p></div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="counter"><div class="counter-value" data-count="80">0</div><p class="text-white-50 mb-0">Clientes satisfechos</p></div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="counter"><div class="counter-value" data-count="6">0</div><p class="text-white-50 mb-0">Años de experiencia</p></div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="counter"><div class="counter-value" data-count="24">0</div><p class="text-white-50 mb-0">Horas de soporte</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Counter End -->
+
+<!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="/img/about-1.svg" class="img-fluid w-75 rounded" alt="" style="margin-bottom: 25%;">
+                    <img src="/img/about-2.svg" class="img-fluid w-50 rounded position-absolute bottom-0 end-0 border border-4 border-white" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h6 class="text-secondary text-uppercase">Sobre nosotros</h6>
+                <h1 class="mb-4"><%= content.about_title %></h1>
+                <p class="mb-4"><%= content.about_body %></p>
+                <a href="/nosotros" class="btn btn-primary py-3 px-5">Conócenos</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Services Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Nuestros servicios</h6>
+            <h1>Soluciones pensadas para tu negocio</h1>
+        </div>
+        <div class="row g-4">
+            <% services.forEach(s => { %>
+            <div class="col-lg-4 col-md-6">
+                <div class="services-item">
+                    <div class="services-content-icon"><i class="<%= s.icon %>"></i></div>
+                    <h5><%= s.title %></h5>
+                    <p class="mb-0"><%= s.description %></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<!-- Services End -->
+
+<!-- Projects Start -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Portafolio</h6>
+            <h1>Proyectos recientes</h1>
+        </div>
+        <div class="row g-4">
+            <% projects.forEach(p => { %>
+            <div class="col-lg-4 col-md-6">
+                <div class="project-item">
+                    <div class="project-img">
+                        <img src="<%= p.image %>" class="img-fluid" alt="<%= p.title %>">
+                    </div>
+                    <div class="project-content">
+                        <p class="text-secondary mb-1"><%= p.category %></p>
+                        <h5><%= p.title %></h5>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<!-- Projects End -->
+
+<!-- Team Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Nuestro equipo</h6>
+            <h1>Conoce al equipo</h1>
+        </div>
+        <div class="row g-4">
+            <% team.forEach(t => { %>
+            <div class="col-lg-3 col-md-6">
+                <div class="team-item">
+                    <div class="team-img">
+                        <img src="<%= t.photo %>" class="img-fluid w-100 rounded-circle" alt="<%= t.name %>">
+                        <div class="team-img-icon">
+                            <% if (t.facebook) { %><a href="<%= t.facebook %>"><i class="fab fa-facebook-f"></i></a><% } %>
+                            <% if (t.linkedin) { %><a href="<%= t.linkedin %>"><i class="fab fa-linkedin-in"></i></a><% } %>
+                        </div>
+                    </div>
+                    <h5 class="team-name"><%= t.name %></h5>
+                    <p class="text-secondary mb-0"><%= t.role %></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+<!-- Testimonial Start -->
+<div class="container-fluid py-5 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Testimonios</h6>
+            <h1>Lo que dicen nuestros clientes</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+            <% testimonials.forEach(t => { %>
+            <div class="testimonial-item">
+                <img src="<%= t.photo %>" alt="<%= t.name %>">
+                <p>"<%= t.message %>"</p>
+                <h5 class="mb-0"><%= t.name %></h5>
+                <span class="text-secondary"><%= t.role %></span>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+<!-- Blog Start -->
+<% if (posts.length) { %>
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Blog</h6>
+            <h1>Últimas publicaciones</h1>
+        </div>
+        <div class="row g-4">
+            <% posts.forEach(p => { %>
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-item">
+                    <img src="<%= p.image %>" alt="<%= p.title %>">
+                    <div class="blog-content">
+                        <div class="blog-icon">
+                            <small><i class="fas fa-user"></i> <%= p.author %></small>
+                        </div>
+                        <h5><a href="/blog/<%= p.slug %>" class="text-dark"><%= p.title %></a></h5>
+                        <p><%= p.excerpt %></p>
+                        <a href="/blog/<%= p.slug %>" class="blog-btn">Leer más <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+<% } %>
+<!-- Blog End -->
+
+<%- include('../partials/footer') %>

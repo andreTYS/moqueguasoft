@@ -1,0 +1,69 @@
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark py-2 d-none d-md-flex">
+        <div class="container">
+            <div class="d-flex justify-content-between topbar">
+                <div class="top-info">
+                    <small class="me-3 text-white-50"><i class="fas fa-map-marker-alt me-2 text-secondary"></i><%= settings.address %></small>
+                    <small class="me-3 text-white-50"><a href="mailto:<%= settings.email %>" class="text-white-50"><i class="fas fa-envelope me-2 text-secondary"></i><%= settings.email %></a></small>
+                </div>
+                <div id="note" class="text-secondary d-none d-xl-flex"><small><%= settings.tagline %></small></div>
+                <div class="top-link">
+                    <% if (settings.facebook) { %><a href="<%= settings.facebook %>" target="_blank" rel="noopener" class="bg-light nav-fill btn btn-sm-square rounded-circle"><i class="fab fa-facebook-f text-primary"></i></a><% } %>
+                    <% if (settings.instagram) { %><a href="<%= settings.instagram %>" target="_blank" rel="noopener" class="bg-light nav-fill btn btn-sm-square rounded-circle"><i class="fab fa-instagram text-primary"></i></a><% } %>
+                    <% if (settings.linkedin) { %><a href="<%= settings.linkedin %>" target="_blank" rel="noopener" class="bg-light nav-fill btn btn-sm-square rounded-circle"><i class="fab fa-linkedin-in text-primary"></i></a><% } %>
+                    <% if (settings.tiktok) { %><a href="<%= settings.tiktok %>" target="_blank" rel="noopener" class="bg-light nav-fill btn btn-sm-square rounded-circle me-0"><i class="fab fa-tiktok text-primary"></i></a><% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid bg-primary">
+        <div class="container">
+            <nav class="navbar navbar-dark navbar-expand-lg py-0">
+                <a href="/" class="navbar-brand">
+                    <h1 class="text-white fw-bold d-block m-0">Moquegua<span class="text-secondary">Soft</span></h1>
+                </a>
+                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto mx-xl-auto p-0">
+                        <a href="/" class="nav-item nav-link <%= currentPath === '/' ? 'active text-secondary' : '' %>">Inicio</a>
+                        <a href="/nosotros" class="nav-item nav-link <%= currentPath === '/nosotros' ? 'active text-secondary' : '' %>">Nosotros</a>
+                        <a href="/servicios" class="nav-item nav-link <%= currentPath === '/servicios' ? 'active text-secondary' : '' %>">Servicios</a>
+                        <a href="/proyectos" class="nav-item nav-link <%= currentPath === '/proyectos' ? 'active text-secondary' : '' %>">Proyectos</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Más</a>
+                            <div class="dropdown-menu rounded">
+                                <a href="/blog" class="dropdown-item">Blog</a>
+                                <a href="/equipo" class="dropdown-item">Equipo</a>
+                                <a href="/testimonios" class="dropdown-item">Testimonios</a>
+                            </div>
+                        </div>
+                        <a href="/contacto" class="nav-item nav-link <%= currentPath === '/contacto' ? 'active text-secondary' : '' %>">Contacto</a>
+                    </div>
+                </div>
+                <div class="d-none d-xl-flex flex-shirink-0">
+                    <div id="phone-tada" class="d-flex align-items-center justify-content-center me-4">
+                        <a href="tel:<%= settings.phone %>" class="position-relative animated tada infinite">
+                            <i class="fa fa-phone-alt text-white fa-2x"></i>
+                        </a>
+                    </div>
+                    <div class="d-flex flex-column pe-4">
+                        <span class="text-white-50">¿Tienes alguna pregunta?</span>
+                        <span class="text-secondary">Llama: <%= settings.phone %></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->

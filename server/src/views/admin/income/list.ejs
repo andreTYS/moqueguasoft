@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted"><%= rows.length %> registro(s) · Total: S/ <%= total.toFixed(2) %></span>
+    <a href="/admin/ingresos/nuevo" class="btn btn-ms-primary btn-sm"><i class="bi bi-plus-lg me-1"></i>Nuevo ingreso</a>
+</div>
+
+<div class="table-card">
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead><tr><th>Fecha</th><th>Concepto</th><th>Cliente</th><th>Proyecto</th><th>Método</th><th class="text-end">Monto</th><th></th></tr></thead>
+            <tbody>
+                <% rows.forEach(r => { %>
+                <tr>
+                    <td><%= r.income_date %></td>
+                    <td><%= r.concept %></td>
+                    <td><%= r.client_name || '—' %></td>
+                    <td><%= r.project_name || '—' %></td>
+                    <td class="text-capitalize"><%= r.method %></td>
+                    <td class="text-end"><%= r.currency %> <%= r.amount.toFixed(2) %></td>
+                    <td class="text-end">
+                        <a href="/admin/facturas/nueva?income_id=<%= r.id %>&client_id=<%= r.client_id || '' %>&project_id=<%= r.project_id || '' %>&concept=<%= encodeURIComponent(r.concept) %>&amount=<%= r.amount %>" class="btn btn-sm btn-outline-secondary" title="Emitir comprobante"><i class="bi bi-receipt"></i></a>
+                        <a href="/admin/ingresos/<%= r.id %>/editar" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></a>
+                        <form action="/admin/ingresos/<%= r.id %>/eliminar" method="POST" class="d-inline" onsubmit="return confirm('¿Eliminar este ingreso?');">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+                <% if (!rows.length) { %><tr><td colspan="7" class="text-center text-muted py-4">Aún no hay ingresos registrados.</td></tr><% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/shell-end') %>

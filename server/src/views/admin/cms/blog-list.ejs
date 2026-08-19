@@ -1,0 +1,36 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted"><%= posts.length %> artículo(s)</span>
+    <a href="/admin/cms/blog/nuevo" class="btn btn-ms-primary btn-sm"><i class="bi bi-plus-lg me-1"></i>Nuevo artículo</a>
+</div>
+
+<div class="table-card">
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead><tr><th></th><th>Título</th><th>Autor</th><th>Fecha</th><th>Estado</th><th></th></tr></thead>
+            <tbody>
+                <% posts.forEach(p => { %>
+                <tr>
+                    <td><img src="<%= p.image %>" class="thumb-preview" alt=""></td>
+                    <td><a href="/blog/<%= p.slug %>" target="_blank"><%= p.title %></a></td>
+                    <td><%= p.author %></td>
+                    <td><%= new Date(p.published_at).toLocaleDateString('es-PE') %></td>
+                    <td><span class="badge <%= p.active ? 'bg-success' : 'bg-secondary' %>"><%= p.active ? 'Publicado' : 'Oculto' %></span></td>
+                    <td class="text-end">
+                        <a href="/admin/cms/blog/<%= p.id %>/editar" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></a>
+                        <form action="/admin/cms/blog/<%= p.id %>/eliminar" method="POST" class="d-inline" onsubmit="return confirm('¿Eliminar este artículo?');">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+                <% if (!posts.length) { %><tr><td colspan="6" class="text-center text-muted py-4">Aún no hay artículos.</td></tr><% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/shell-end') %>

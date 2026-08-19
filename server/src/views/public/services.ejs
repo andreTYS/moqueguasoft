@@ -1,0 +1,28 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { pageHeaderTitle: 'Servicios' }) %>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Nuestros servicios</h6>
+            <h1>Soluciones construidas para tu negocio</h1>
+        </div>
+        <div class="row g-4">
+            <% services.forEach(s => { %>
+            <div class="col-lg-4 col-md-6">
+                <div class="services-item">
+                    <div class="services-content-icon"><i class="<%= s.icon %>"></i></div>
+                    <h5><%= s.title %></h5>
+                    <p class="mb-0"><%= s.description %></p>
+                </div>
+            </div>
+            <% }) %>
+            <% if (!services.length) { %>
+            <p class="text-center">Aún no hay servicios publicados. Agrégalos desde el panel de administración.</p>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

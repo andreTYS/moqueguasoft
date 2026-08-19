@@ -1,0 +1,59 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="table-card" style="max-width:640px;">
+    <form method="POST" action="/admin/cms/general">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="mb-3">
+            <label class="form-label">Nombre del sitio</label>
+            <input type="text" name="site_name" class="form-control" value="<%= settings.site_name %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Eslogan</label>
+            <input type="text" name="tagline" class="form-control" value="<%= settings.tagline %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Dirección</label>
+            <input type="text" name="address" class="form-control" value="<%= settings.address %>">
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="text" name="phone" class="form-control" value="<%= settings.phone %>">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">WhatsApp (solo números, con código de país)</label>
+                <input type="text" name="whatsapp" class="form-control" value="<%= settings.whatsapp %>">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Correo</label>
+            <input type="email" name="email" class="form-control" value="<%= settings.email %>">
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Facebook</label>
+                <input type="url" name="facebook" class="form-control" value="<%= settings.facebook %>">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Instagram</label>
+                <input type="url" name="instagram" class="form-control" value="<%= settings.instagram %>">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">LinkedIn</label>
+                <input type="url" name="linkedin" class="form-control" value="<%= settings.linkedin %>">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">TikTok</label>
+                <input type="url" name="tiktok" class="form-control" value="<%= settings.tiktok %>">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">URL del mapa (Google Maps, versión "embed")</label>
+            <input type="url" name="map_embed" class="form-control" value="<%= settings.map_embed %>">
+        </div>
+        <button class="btn btn-ms-primary">Guardar cambios</button>
+    </form>
+</div>
+
+<%- include('../partials/shell-end') %>

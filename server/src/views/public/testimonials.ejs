@@ -1,0 +1,26 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { pageHeaderTitle: 'Testimonios' }) %>
+
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-secondary text-uppercase">Testimonios</h6>
+            <h1>Lo que dicen nuestros clientes</h1>
+        </div>
+        <div class="row g-4">
+            <% testimonials.forEach(t => { %>
+            <div class="col-lg-6">
+                <div class="testimonial-item">
+                    <img src="<%= t.photo %>" alt="<%= t.name %>">
+                    <p>"<%= t.message %>"</p>
+                    <h5 class="mb-0"><%= t.name %></h5>
+                    <span class="text-secondary"><%= t.role %></span>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

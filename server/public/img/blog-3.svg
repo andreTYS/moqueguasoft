@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="gblog-3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b2545"/>
+      <stop offset="100%" stop-color="#071a33"/>
+    </linearGradient>
+    <clipPath id="cblog-3"><rect width="800" height="500" rx="0"/></clipPath>
+  </defs>
+  <g clip-path="url(#cblog-3)">
+    <rect width="800" height="500" fill="url(#gblog-3)"/>
+    <circle cx="680" cy="60" r="225" fill="#f2a71b" opacity="0.10"/>
+    <circle cx="80" cy="475" r="175" fill="#ffffff" opacity="0.06"/>
+    <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
+      <line x1="0" y1="0" x2="800" y2="0"/><line x1="0" y1="83.33333333333333" x2="800" y2="83.33333333333333"/><line x1="0" y1="166.66666666666666" x2="800" y2="166.66666666666666"/><line x1="0" y1="250" x2="800" y2="250"/><line x1="0" y1="333.3333333333333" x2="800" y2="333.3333333333333"/><line x1="0" y1="416.66666666666663" x2="800" y2="416.66666666666663"/>
+    </g>
+    <rect x="328" y="187" width="144" height="51.74999999999999" rx="6" fill="#f2a71b"/>
+    <text x="400" y="225.25" font-family="Arial, Helvetica, sans-serif" font-size="27.9" font-weight="700" fill="#071a33" text-anchor="middle" dominant-baseline="middle">MS</text>
+    <text x="400" y="274.75" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">Blog</text>
+    <text x="400" y="313" font-family="Arial, Helvetica, sans-serif" font-size="19" fill="#ffffff" fill-opacity="0.75" text-anchor="middle" dominant-baseline="middle">Artículo de tecnología</text>
+  </g>
+</svg>

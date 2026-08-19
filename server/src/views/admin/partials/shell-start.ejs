@@ -1,0 +1,37 @@
+<div class="d-flex">
+    <nav class="admin-sidebar" style="width: 240px; flex-shrink: 0;">
+        <div class="brand">Moquegua<span style="color:#f2a71b">Soft</span></div>
+        <a href="/admin" class="<%= currentPath === '/admin' ? 'active' : '' %>"><i class="bi bi-speedometer2 me-2"></i>Panel</a>
+
+        <div class="section-title">ERP</div>
+        <a href="/admin/clientes" class="<%= currentPath.startsWith('/admin/clientes') ? 'active' : '' %>"><i class="bi bi-people me-2"></i>Clientes</a>
+        <a href="/admin/proyectos" class="<%= currentPath.startsWith('/admin/proyectos') ? 'active' : '' %>"><i class="bi bi-kanban me-2"></i>Proyectos</a>
+        <a href="/admin/ingresos" class="<%= currentPath.startsWith('/admin/ingresos') ? 'active' : '' %>"><i class="bi bi-graph-up-arrow me-2"></i>Ingresos</a>
+        <a href="/admin/gastos" class="<%= currentPath.startsWith('/admin/gastos') ? 'active' : '' %>"><i class="bi bi-graph-down-arrow me-2"></i>Gastos</a>
+        <a href="/admin/facturas" class="<%= currentPath.startsWith('/admin/facturas') ? 'active' : '' %>"><i class="bi bi-receipt me-2"></i>Facturación</a>
+        <a href="/admin/mensajes" class="<%= currentPath.startsWith('/admin/mensajes') ? 'active' : '' %>"><i class="bi bi-envelope me-2"></i>Mensajes</a>
+
+        <div class="section-title">CMS del sitio</div>
+        <a href="/admin/cms/general" class="<%= currentPath === '/admin/cms/general' ? 'active' : '' %>"><i class="bi bi-gear me-2"></i>Datos generales</a>
+        <a href="/admin/cms/textos" class="<%= currentPath === '/admin/cms/textos' ? 'active' : '' %>"><i class="bi bi-file-text me-2"></i>Textos</a>
+        <a href="/admin/cms/slides" class="<%= currentPath === '/admin/cms/slides' ? 'active' : '' %>"><i class="bi bi-images me-2"></i>Carrusel</a>
+        <a href="/admin/cms/servicios" class="<%= currentPath === '/admin/cms/servicios' ? 'active' : '' %>"><i class="bi bi-briefcase me-2"></i>Servicios</a>
+        <a href="/admin/cms/proyectos" class="<%= currentPath === '/admin/cms/proyectos' ? 'active' : '' %>"><i class="bi bi-folder2-open me-2"></i>Portafolio</a>
+        <a href="/admin/cms/equipo" class="<%= currentPath === '/admin/cms/equipo' ? 'active' : '' %>"><i class="bi bi-person-badge me-2"></i>Equipo</a>
+        <a href="/admin/cms/testimonios" class="<%= currentPath === '/admin/cms/testimonios' ? 'active' : '' %>"><i class="bi bi-chat-quote me-2"></i>Testimonios</a>
+        <a href="/admin/cms/blog" class="<%= currentPath.startsWith('/admin/cms/blog') ? 'active' : '' %>"><i class="bi bi-newspaper me-2"></i>Blog</a>
+
+        <div class="section-title">&nbsp;</div>
+        <a href="/" target="_blank"><i class="bi bi-box-arrow-up-right me-2"></i>Ver sitio</a>
+        <form action="/admin/logout" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button type="submit" class="btn btn-link w-100 text-start" style="color: rgba(255,255,255,.75); padding: 11px 20px; text-decoration:none;"><i class="bi bi-box-arrow-left me-2"></i>Cerrar sesión</button>
+        </form>
+    </nav>
+
+    <div class="flex-grow-1">
+        <div class="admin-topbar d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><%= pageTitle %></h5>
+            <span class="text-muted small"><i class="bi bi-person-circle me-1"></i><%= currentUser ? currentUser.name : '' %></span>
+        </div>
+        <div class="admin-content">
