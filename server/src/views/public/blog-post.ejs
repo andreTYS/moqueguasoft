@@ -2,29 +2,39 @@
 <%- include('../partials/header') %>
 <%- include('../partials/page-header', { pageHeaderTitle: post.title }) %>
 
-<div class="container-fluid py-5">
+<section class="section post-detail">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-8">
-                <img src="<%= post.image %>" class="img-fluid w-100 rounded mb-4" alt="<%= post.title %>">
-                <div class="blog-icon">
-                    <small><i class="fas fa-user"></i> <%= post.author %></small>
-                    <small><i class="fas fa-calendar-alt"></i> <%= new Date(post.published_at).toLocaleDateString('es-PE') %></small>
+                <% if (media.isUploaded(post.image)) { %>
+                <img src="<%= post.image %>" class="cover" alt="<%= post.title %>">
+                <% } else { %>
+                <div class="cover grad-<%= (post.id % 6) + 1 %>" style="height:280px; display:flex; align-items:center; justify-content:center;">
+                    <i class="fas fa-newspaper" style="font-size:4rem; color:rgba(255,255,255,.5);"></i>
                 </div>
-                <h1 class="mb-4"><%= post.title %></h1>
-                <div><%- post.content %></div>
+                <% } %>
+                <div class="post-card__meta mb-3">
+                    <span><i class="fas fa-user"></i><%= post.author %></span>
+                    <span><i class="fas fa-calendar-alt"></i><%= new Date(post.published_at).toLocaleDateString('es-PE') %></span>
+                </div>
+                <h1 class="mb-4" style="font-size:clamp(1.6rem,3vw,2.3rem);"><%= post.title %></h1>
+                <div class="content"><%- post.content %></div>
             </div>
             <div class="col-lg-4">
-                <h5 class="mb-4">Otras publicaciones</h5>
+                <h3 class="mb-4" style="font-size:1.1rem;">Otras publicaciones</h3>
                 <% others.forEach(o => { %>
-                <a href="/blog/<%= o.slug %>" class="d-flex align-items-center mb-3 text-dark">
-                    <img src="<%= o.image %>" style="width:70px;height:70px;object-fit:cover;border-radius:8px;" class="me-3" alt="<%= o.title %>">
+                <a href="/blog/<%= o.slug %>" class="related-item">
+                    <% if (media.isUploaded(o.image)) { %>
+                        <div class="thumb"><img src="<%= o.image %>" alt="<%= o.title %>"></div>
+                    <% } else { %>
+                        <div class="thumb grad-<%= (o.id % 6) + 1 %>"><i class="fas fa-newspaper"></i></div>
+                    <% } %>
                     <span><%= o.title %></span>
                 </a>
                 <% }) %>
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <%- include('../partials/footer') %>

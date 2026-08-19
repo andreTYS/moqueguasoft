@@ -1,62 +1,68 @@
+    <!-- CTA Start -->
+    <div class="section section--tight">
+        <div class="container">
+            <div class="cta-banner">
+                <div class="cta-banner__inner">
+                    <h2>¿Listo para modernizar tu negocio?</h2>
+                    <p>Cuéntanos qué necesitas — sitio web, un sistema a medida o un ERP para tus ingresos — y te respondemos con una propuesta clara.</p>
+                    <a href="/contacto" class="btn-pill btn-pill--solid">Escríbenos <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CTA End -->
+
     <!-- Footer Start -->
-    <div class="container-fluid footer py-5">
+    <footer class="footer">
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-4">Moquegua<span class="text-secondary">Soft</span></h4>
-                    <p class="mb-3"><%= settings.tagline %></p>
-                    <div class="d-flex">
-                        <% if (settings.facebook) { %><a class="btn btn-square btn-outline-light rounded-circle me-2" href="<%= settings.facebook %>" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a><% } %>
-                        <% if (settings.instagram) { %><a class="btn btn-square btn-outline-light rounded-circle me-2" href="<%= settings.instagram %>" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a><% } %>
-                        <% if (settings.linkedin) { %><a class="btn btn-square btn-outline-light rounded-circle me-2" href="<%= settings.linkedin %>" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a><% } %>
+                <div class="col-lg-4 col-md-6">
+                    <a href="/" class="ms-nav__brand" style="color:#fff;">Moquegua<span style="color:var(--accent)">Soft</span></a>
+                    <p class="mt-3 mb-0"><%= settings.tagline %></p>
+                    <div class="social-row">
+                        <% if (settings.facebook) { %><a href="<%= settings.facebook %>" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a><% } %>
+                        <% if (settings.instagram) { %><a href="<%= settings.instagram %>" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a><% } %>
+                        <% if (settings.linkedin) { %><a href="<%= settings.linkedin %>" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a><% } %>
+                        <% if (settings.tiktok) { %><a href="<%= settings.tiktok %>" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a><% } %>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Enlaces</h5>
-                    <div class="short-link">
-                        <a href="/nosotros"><i class="fas fa-angle-right"></i> Nosotros</a>
-                        <a href="/servicios"><i class="fas fa-angle-right"></i> Servicios</a>
-                        <a href="/proyectos"><i class="fas fa-angle-right"></i> Proyectos</a>
-                        <a href="/blog"><i class="fas fa-angle-right"></i> Blog</a>
-                        <a href="/contacto"><i class="fas fa-angle-right"></i> Contacto</a>
-                    </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Enlaces</h5>
+                    <ul>
+                        <li><a href="/nosotros"><i class="fas fa-angle-right"></i> Nosotros</a></li>
+                        <li><a href="/servicios"><i class="fas fa-angle-right"></i> Servicios</a></li>
+                        <li><a href="/proyectos"><i class="fas fa-angle-right"></i> Proyectos</a></li>
+                        <li><a href="/blog"><i class="fas fa-angle-right"></i> Blog</a></li>
+                    </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Contacto</h5>
-                    <div class="help-link">
-                        <a href="#"><i class="fas fa-map-marker-alt"></i> <%= settings.address %></a>
-                        <a href="tel:<%= settings.phone %>"><i class="fas fa-phone-alt"></i> <%= settings.phone %></a>
-                        <a href="mailto:<%= settings.email %>"><i class="fas fa-envelope"></i> <%= settings.email %></a>
-                    </div>
+                    <h5>Contacto</h5>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> <%= settings.address %></a></li>
+                        <li><a href="tel:<%= settings.phone %>"><i class="fas fa-phone-alt"></i> <%= settings.phone %></a></li>
+                        <li><a href="mailto:<%= settings.email %>"><i class="fas fa-envelope"></i> <%= settings.email %></a></li>
+                    </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5 class="text-white mb-4">Panel</h5>
-                    <div class="help-link">
-                        <a href="/admin"><i class="fas fa-user-secret"></i> Acceso administrador</a>
-                    </div>
+                    <h5>Panel</h5>
+                    <ul>
+                        <li><a href="/admin"><i class="fas fa-lock"></i> Acceso administrador</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="container-fluid hightech-link bg-dark py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <span class="text-white-50"><i class="fas fa-copyright text-light me-2"></i><%= new Date().getFullYear() %> Moquegua Soft. Todos los derechos reservados.</span>
-                </div>
+            <div class="footer__bottom">
+                <span>© <%= new Date().getFullYear() %> Moquegua Soft. Todos los derechos reservados.</span>
             </div>
         </div>
-    </div>
+    </footer>
     <!-- Footer End -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up"></i></a>
 
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/lib/wow/wow.min.js"></script>
     <script src="/lib/easing/easing.min.js"></script>
     <script src="/lib/waypoints/waypoints.min.js"></script>
-    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
 </body>
 

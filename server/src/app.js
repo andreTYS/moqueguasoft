@@ -11,6 +11,7 @@ const { seedAll } = require('./seed');
 const { attachUser } = require('./middleware/auth');
 const { csrfToken } = require('./middleware/csrf');
 const { getSettings } = require('./lib/content');
+const media = require('./lib/media');
 
 seedAll();
 
@@ -48,6 +49,7 @@ app.use((req, res, next) => {
     res.locals.siteName = config.siteName;
     res.locals.currentPath = req.path;
     res.locals.settings = getSettings();
+    res.locals.media = media;
     next();
 });
 

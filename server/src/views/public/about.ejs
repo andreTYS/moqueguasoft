@@ -2,45 +2,48 @@
 <%- include('../partials/header') %>
 <%- include('../partials/page-header', { pageHeaderTitle: 'Nosotros' }) %>
 
-<div class="container-fluid py-5">
+<section class="section">
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
-                <div class="position-relative">
-                    <img src="/img/about-1.svg" class="img-fluid w-75 rounded" alt="" style="margin-bottom: 25%;">
-                    <img src="/img/about-2.svg" class="img-fluid w-50 rounded position-absolute bottom-0 end-0 border border-4 border-white" alt="">
+                <div class="about__visual">
+                    <div class="about__card-main"></div>
+                    <div class="about__card-float">
+                        <div class="value">100% remoto</div>
+                        <div class="label">Trabajamos con negocios de todo el Perú</div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <h6 class="text-secondary text-uppercase">Quiénes somos</h6>
-                <h1 class="mb-4"><%= content.intro_title %></h1>
+                <div class="kicker">Quiénes somos</div>
+                <h2 class="mb-4" style="font-size:clamp(1.7rem,3vw,2.2rem); font-weight:700;"><%= content.intro_title %></h2>
                 <p class="mb-4"><%= content.intro_body %></p>
-                <p class="mb-0"><strong>Nuestra misión:</strong> <%= content.mission %></p>
+                <p class="mb-0"><strong style="color:var(--ink)">Nuestra misión:</strong> <%= content.mission %></p>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="container-fluid py-5 bg-light">
+<section class="section section--alt">
     <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Nuestro equipo</h6>
-            <h1>Personas detrás de Moquegua Soft</h1>
+        <div class="section-head section-head--center mx-auto">
+            <div class="kicker" style="justify-content:center;">Nuestro equipo</div>
+            <h2>Personas detrás de Moquegua Soft</h2>
         </div>
-        <div class="row g-4">
+        <div class="team-grid">
             <% team.forEach(t => { %>
-            <div class="col-lg-3 col-md-6">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="<%= t.photo %>" class="img-fluid w-100 rounded-circle" alt="<%= t.name %>">
-                    </div>
-                    <h5 class="team-name"><%= t.name %></h5>
-                    <p class="text-secondary mb-0"><%= t.role %></p>
-                </div>
+            <div class="team-card">
+                <% if (media.isUploaded(t.photo)) { %>
+                    <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                <% } else { %>
+                    <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                <% } %>
+                <h3><%= t.name %></h3>
+                <div class="role"><%= t.role %></div>
             </div>
             <% }) %>
         </div>
     </div>
-</div>
+</section>
 
 <%- include('../partials/footer') %>

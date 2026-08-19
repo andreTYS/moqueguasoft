@@ -2,24 +2,23 @@
 <%- include('../partials/header') %>
 <%- include('../partials/page-header', { pageHeaderTitle: 'Proyectos' }) %>
 
-<div class="container-fluid py-5">
+<section class="section">
     <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Portafolio</h6>
-            <h1>Proyectos que hemos desarrollado</h1>
+        <div class="section-head section-head--center mx-auto">
+            <div class="kicker" style="justify-content:center;">Portafolio</div>
+            <h2>Proyectos que hemos desarrollado</h2>
         </div>
-        <div class="row g-4">
-            <% projects.forEach(p => { %>
-            <div class="col-lg-4 col-md-6">
-                <div class="project-item">
-                    <div class="project-img">
-                        <img src="<%= p.image %>" class="img-fluid" alt="<%= p.title %>">
-                    </div>
-                    <div class="project-content">
-                        <p class="text-secondary mb-1"><%= p.category %></p>
-                        <h5><%= p.title %></h5>
-                        <% if (p.description) { %><p class="text-white-50 small mb-0"><%= p.description %></p><% } %>
-                    </div>
+        <div class="work-grid">
+            <% projects.forEach((p, i) => { %>
+            <div class="work-card">
+                <div class="work-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
+                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
+                    <i class="fas fa-diagram-project"></i>
+                    <span class="work-card__tag"><%= p.category %></span>
+                </div>
+                <div class="work-card__body">
+                    <h3><%= p.title %></h3>
+                    <% if (p.description) { %><p><%= p.description %></p><% } %>
                 </div>
             </div>
             <% }) %>
@@ -28,6 +27,6 @@
             <% } %>
         </div>
     </div>
-</div>
+</section>
 
 <%- include('../partials/footer') %>

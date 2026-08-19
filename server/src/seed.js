@@ -50,10 +50,10 @@ function seedHeroSlides() {
 function seedServices() {
     if (count('services') > 0) return;
     const items = [
+        ['Sistemas ERP', 'Control de ingresos, gastos, clientes y proyectos en un panel centralizado, hecho a la medida de tu negocio.', 'fas fa-chart-line'],
         ['Desarrollo Web', 'Sitios y landing pages rápidas, responsivas y optimizadas para buscadores.', 'fas fa-laptop-code'],
-        ['Software a Medida', 'Sistemas hechos a tu proceso: desde un formulario hasta una plataforma completa.', 'fas fa-code'],
-        ['Sistemas ERP', 'Control de ingresos, gastos, clientes y proyectos en un panel centralizado.', 'fas fa-chart-line'],
         ['CMS y Gestión de Contenido', 'Edita textos e imágenes de tu web sin tocar código, desde un panel simple.', 'fas fa-edit'],
+        ['Software a Medida', 'Sistemas hechos a tu proceso: desde un formulario hasta una plataforma completa.', 'fas fa-code'],
         ['Seguridad Informática', 'Buenas prácticas, copias de seguridad y protección de tus datos y accesos.', 'fas fa-shield-alt'],
         ['Consultoría TI', 'Te ayudamos a elegir e implementar la tecnología correcta para tu negocio.', 'fas fa-users-cog'],
     ];

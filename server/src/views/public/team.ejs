@@ -2,32 +2,34 @@
 <%- include('../partials/header') %>
 <%- include('../partials/page-header', { pageHeaderTitle: 'Equipo' }) %>
 
-<div class="container-fluid py-5">
+<section class="section">
     <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Nuestro equipo</h6>
-            <h1>Conoce a las personas de Moquegua Soft</h1>
+        <div class="section-head section-head--center mx-auto">
+            <div class="kicker" style="justify-content:center;">Nuestro equipo</div>
+            <h2>Conoce a las personas de Moquegua Soft</h2>
         </div>
-        <div class="row g-4">
+        <div class="team-grid">
             <% team.forEach(t => { %>
-            <div class="col-lg-3 col-md-6">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="<%= t.photo %>" class="img-fluid w-100 rounded-circle" alt="<%= t.name %>">
-                        <div class="team-img-icon">
-                            <% if (t.facebook) { %><a href="<%= t.facebook %>"><i class="fab fa-facebook-f"></i></a><% } %>
-                            <% if (t.twitter) { %><a href="<%= t.twitter %>"><i class="fab fa-twitter"></i></a><% } %>
-                            <% if (t.instagram) { %><a href="<%= t.instagram %>"><i class="fab fa-instagram"></i></a><% } %>
-                            <% if (t.linkedin) { %><a href="<%= t.linkedin %>"><i class="fab fa-linkedin-in"></i></a><% } %>
-                        </div>
-                    </div>
-                    <h5 class="team-name"><%= t.name %></h5>
-                    <p class="text-secondary mb-0"><%= t.role %></p>
+            <div class="team-card">
+                <% if (media.isUploaded(t.photo)) { %>
+                    <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                <% } else { %>
+                    <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                <% } %>
+                <h3><%= t.name %></h3>
+                <div class="role"><%= t.role %></div>
+                <% if (t.facebook || t.twitter || t.instagram || t.linkedin) { %>
+                <div class="team-card__social">
+                    <% if (t.facebook) { %><a href="<%= t.facebook %>"><i class="fab fa-facebook-f"></i></a><% } %>
+                    <% if (t.twitter) { %><a href="<%= t.twitter %>"><i class="fab fa-twitter"></i></a><% } %>
+                    <% if (t.instagram) { %><a href="<%= t.instagram %>"><i class="fab fa-instagram"></i></a><% } %>
+                    <% if (t.linkedin) { %><a href="<%= t.linkedin %>"><i class="fab fa-linkedin-in"></i></a><% } %>
                 </div>
+                <% } %>
             </div>
             <% }) %>
         </div>
     </div>
-</div>
+</section>
 
 <%- include('../partials/footer') %>

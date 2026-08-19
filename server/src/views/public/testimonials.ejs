@@ -2,25 +2,30 @@
 <%- include('../partials/header') %>
 <%- include('../partials/page-header', { pageHeaderTitle: 'Testimonios' }) %>
 
-<div class="container-fluid py-5">
+<section class="section">
     <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Testimonios</h6>
-            <h1>Lo que dicen nuestros clientes</h1>
-        </div>
         <div class="row g-4">
             <% testimonials.forEach(t => { %>
             <div class="col-lg-6">
-                <div class="testimonial-item">
-                    <img src="<%= t.photo %>" alt="<%= t.name %>">
-                    <p>"<%= t.message %>"</p>
-                    <h5 class="mb-0"><%= t.name %></h5>
-                    <span class="text-secondary"><%= t.role %></span>
+                <div class="quote-card" style="width:100%;">
+                    <div class="quote-card__mark">&ldquo;</div>
+                    <p class="msg"><%= t.message %></p>
+                    <div class="quote-card__person">
+                        <% if (media.isUploaded(t.photo)) { %>
+                            <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                        <% } else { %>
+                            <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                        <% } %>
+                        <div>
+                            <h4><%= t.name %></h4>
+                            <span><%= t.role %></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <% }) %>
         </div>
     </div>
-</div>
+</section>
 
 <%- include('../partials/footer') %>

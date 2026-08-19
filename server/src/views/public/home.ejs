@@ -1,201 +1,239 @@
 <%- include('../partials/head') %>
 <%- include('../partials/header') %>
 
-<!-- Carousel Start -->
-<div class="container-fluid p-0">
-    <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <% slides.forEach((slide, i) => { %>
-            <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-                <img src="<%= slide.image %>" class="img-fluid" alt="<%= slide.title %>">
-                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="carousel-content p-3 text-center" style="max-width: 700px;">
-                        <h1 class="display-4 text-white mb-3 animated slideInDown"><%= slide.title %></h1>
-                        <p class="text-white-50 mb-4 fs-5 animated slideInDown"><%= slide.subtitle %></p>
-                        <a href="/servicios" class="btn btn-secondary carousel-content-btn1 animated slideInLeft me-2">Nuestros servicios</a>
-                        <a href="/contacto" class="btn btn-outline-light carousel-content-btn2 animated slideInRight">Contáctanos</a>
+<!-- Hero -->
+<section class="hero">
+    <div class="hero__blob hero__blob--a"></div>
+    <div class="hero__blob hero__blob--b"></div>
+    <div class="hero__grain"></div>
+    <div class="container hero__inner">
+        <div class="hero__grid">
+            <div>
+                <div class="hero__badge mb-3"><i class="fas fa-circle" style="font-size:.5rem;"></i> Disponibles para nuevos proyectos</div>
+                <div id="heroSlides" style="position:relative;">
+                    <% slides.forEach((slide, i) => { %>
+                    <div class="hero__slide" style="opacity:<%= i === 0 ? 1 : 0 %>; <%= i === 0 ? 'position:relative;' : 'position:absolute; top:0; left:0;' %>">
+                        <h1 class="hero__title"><%= slide.title %></h1>
+                        <p class="hero__subtitle"><%= slide.subtitle %></p>
+                    </div>
+                    <% }) %>
+                </div>
+                <div class="hero__actions">
+                    <a href="/servicios" class="btn-pill btn-pill--solid">Nuestros servicios <i class="fas fa-arrow-right"></i></a>
+                    <a href="/contacto" class="btn-pill btn-pill--ghost-light">Hablar con nosotros</a>
+                </div>
+                <% if (slides.length > 1) { %>
+                <div class="hero__dots" id="heroDots">
+                    <% slides.forEach((s, i) => { %><button class="<%= i === 0 ? 'active' : '' %>" aria-label="Slide <%= i+1 %>"></button><% }) %>
+                </div>
+                <% } %>
+            </div>
+
+            <div class="hero__visual d-none d-lg-block">
+                <div class="hero__panel hero__panel--main">
+                    <div class="hero__mock-dots"><span></span><span></span><span></span></div>
+                    <div class="hero__mock-line" style="width:70%"></div>
+                    <div class="hero__mock-line" style="width:45%"></div>
+                    <div class="hero__mock-bars">
+                        <span style="height:40%"></span><span style="height:70%"></span><span style="height:55%"></span>
+                        <span style="height:90%"></span><span style="height:35%"></span><span style="height:65%"></span>
                     </div>
                 </div>
-            </div>
-            <% }) %>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-    </div>
-</div>
-<!-- Carousel End -->
-
-<!-- Counter Start -->
-<div class="container-fluid bg-primary py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-3 col-6">
-                <div class="counter"><div class="counter-value" data-count="120">0</div><p class="text-white-50 mb-0">Proyectos completados</p></div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="counter"><div class="counter-value" data-count="80">0</div><p class="text-white-50 mb-0">Clientes satisfechos</p></div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="counter"><div class="counter-value" data-count="6">0</div><p class="text-white-50 mb-0">Años de experiencia</p></div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="counter"><div class="counter-value" data-count="24">0</div><p class="text-white-50 mb-0">Horas de soporte</p></div>
+                <div class="hero__panel hero__panel--float1">
+                    <div class="hero__stat-label mb-1"><i class="fas fa-arrow-trend-up me-1"></i> Ingresos del mes</div>
+                    <div class="hero__stat-value">+S/ 4,010</div>
+                </div>
+                <div class="hero__panel hero__panel--float2">
+                    <div class="hero__stat-label mb-1"><i class="fas fa-code me-1"></i> CMS + ERP</div>
+                    <div class="hero__stat-value" style="font-size:1.05rem;">Un solo panel</div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Counter End -->
+</section>
 
-<!-- About Start -->
-<div class="container-fluid py-5">
+<!-- Stats flotantes -->
+<div class="container">
+    <div class="stats-strip">
+        <div class="row g-0">
+            <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="116">0</div><div class="stat__label">Proyectos completados</div></div>
+            <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="78">0</div><div class="stat__label">Clientes satisfechos</div></div>
+            <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="6">0</div><div class="stat__label">Años de experiencia</div></div>
+            <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="24">0</div><div class="stat__label">Horas de soporte</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- About -->
+<section class="section">
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6">
-                <div class="position-relative">
-                    <img src="/img/about-1.svg" class="img-fluid w-75 rounded" alt="" style="margin-bottom: 25%;">
-                    <img src="/img/about-2.svg" class="img-fluid w-50 rounded position-absolute bottom-0 end-0 border border-4 border-white" alt="">
+                <div class="about__visual">
+                    <div class="about__card-main"></div>
+                    <div class="about__card-float">
+                        <div class="value">6 años</div>
+                        <div class="label">Construyendo software para negocios locales</div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <h6 class="text-secondary text-uppercase">Sobre nosotros</h6>
-                <h1 class="mb-4"><%= content.about_title %></h1>
+                <div class="kicker">Sobre nosotros</div>
+                <h2 class="mb-4" style="font-size:clamp(1.7rem,3vw,2.2rem); font-weight:700;"><%= content.about_title %></h2>
                 <p class="mb-4"><%= content.about_body %></p>
-                <a href="/nosotros" class="btn btn-primary py-3 px-5">Conócenos</a>
+                <ul class="checklist">
+                    <li><i class="fas fa-circle-check"></i> Sitio web + panel de administración en un solo lugar</li>
+                    <li><i class="fas fa-circle-check"></i> Control de ingresos, gastos y clientes sin hojas de cálculo</li>
+                    <li><i class="fas fa-circle-check"></i> Soporte cercano, en español, con base en Moquegua</li>
+                </ul>
+                <a href="/nosotros" class="btn-pill btn-pill--ghost">Conócenos <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
-</div>
-<!-- About End -->
+</section>
 
-<!-- Services Start -->
-<div class="container-fluid py-5">
+<!-- Servicios (bento) -->
+<section class="section section--alt">
     <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Nuestros servicios</h6>
-            <h1>Soluciones pensadas para tu negocio</h1>
+        <div class="section-head section-head--center mx-auto">
+            <div class="kicker" style="justify-content:center;">Nuestros servicios</div>
+            <h2>Soluciones pensadas para tu negocio</h2>
         </div>
-        <div class="row g-4">
-            <% services.forEach(s => { %>
-            <div class="col-lg-4 col-md-6">
-                <div class="services-item">
-                    <div class="services-content-icon"><i class="<%= s.icon %>"></i></div>
-                    <h5><%= s.title %></h5>
-                    <p class="mb-0"><%= s.description %></p>
+        <div class="bento">
+            <% services.forEach((s, i) => { %>
+            <div class="bento__item <%= i === 0 ? 'bento__item--feature' : '' %>">
+                <div class="bento__index">0<%= i + 1 %></div>
+                <div>
+                    <div class="bento__icon"><i class="<%= s.icon %>"></i></div>
+                    <h3><%= s.title %></h3>
+                    <p><%= s.description %></p>
                 </div>
             </div>
             <% }) %>
         </div>
     </div>
-</div>
-<!-- Services End -->
+</section>
 
-<!-- Projects Start -->
-<div class="container-fluid py-5 bg-light">
+<!-- Proyectos -->
+<section class="section">
     <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Portafolio</h6>
-            <h1>Proyectos recientes</h1>
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+            <div class="section-head mb-0">
+                <div class="kicker">Portafolio</div>
+                <h2>Proyectos recientes</h2>
+            </div>
+            <a href="/proyectos" class="btn-pill btn-pill--ghost btn-pill--sm">Ver todos <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="row g-4">
-            <% projects.forEach(p => { %>
-            <div class="col-lg-4 col-md-6">
-                <div class="project-item">
-                    <div class="project-img">
-                        <img src="<%= p.image %>" class="img-fluid" alt="<%= p.title %>">
-                    </div>
-                    <div class="project-content">
-                        <p class="text-secondary mb-1"><%= p.category %></p>
-                        <h5><%= p.title %></h5>
-                    </div>
+        <div class="work-grid mt-5">
+            <% projects.forEach((p, i) => { %>
+            <div class="work-card">
+                <div class="work-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
+                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
+                    <i class="fas fa-diagram-project"></i>
+                    <span class="work-card__tag"><%= p.category %></span>
+                </div>
+                <div class="work-card__body">
+                    <h3><%= p.title %></h3>
+                    <% if (p.description) { %><p><%= p.description %></p><% } %>
                 </div>
             </div>
             <% }) %>
         </div>
     </div>
-</div>
-<!-- Projects End -->
+</section>
 
-<!-- Team Start -->
-<div class="container-fluid py-5">
+<!-- Equipo -->
+<section class="section section--alt">
     <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Nuestro equipo</h6>
-            <h1>Conoce al equipo</h1>
+        <div class="section-head section-head--center mx-auto">
+            <div class="kicker" style="justify-content:center;">Nuestro equipo</div>
+            <h2>Conoce al equipo</h2>
         </div>
-        <div class="row g-4">
+        <div class="team-grid">
             <% team.forEach(t => { %>
-            <div class="col-lg-3 col-md-6">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="<%= t.photo %>" class="img-fluid w-100 rounded-circle" alt="<%= t.name %>">
-                        <div class="team-img-icon">
-                            <% if (t.facebook) { %><a href="<%= t.facebook %>"><i class="fab fa-facebook-f"></i></a><% } %>
-                            <% if (t.linkedin) { %><a href="<%= t.linkedin %>"><i class="fab fa-linkedin-in"></i></a><% } %>
-                        </div>
-                    </div>
-                    <h5 class="team-name"><%= t.name %></h5>
-                    <p class="text-secondary mb-0"><%= t.role %></p>
+            <div class="team-card">
+                <% if (media.isUploaded(t.photo)) { %>
+                    <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                <% } else { %>
+                    <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                <% } %>
+                <h3><%= t.name %></h3>
+                <div class="role"><%= t.role %></div>
+                <% if (t.facebook || t.linkedin) { %>
+                <div class="team-card__social">
+                    <% if (t.facebook) { %><a href="<%= t.facebook %>"><i class="fab fa-facebook-f"></i></a><% } %>
+                    <% if (t.linkedin) { %><a href="<%= t.linkedin %>"><i class="fab fa-linkedin-in"></i></a><% } %>
                 </div>
+                <% } %>
             </div>
             <% }) %>
         </div>
     </div>
-</div>
-<!-- Team End -->
+</section>
 
-<!-- Testimonial Start -->
-<div class="container-fluid py-5 bg-light">
+<!-- Testimonios -->
+<% if (testimonials.length) { %>
+<section class="section">
     <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Testimonios</h6>
-            <h1>Lo que dicen nuestros clientes</h1>
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+            <div class="section-head mb-0">
+                <div class="kicker">Testimonios</div>
+                <h2>Lo que dicen nuestros clientes</h2>
+            </div>
+            <div class="quote-nav">
+                <button data-dir="prev" aria-label="Anterior"><i class="fas fa-arrow-left"></i></button>
+                <button data-dir="next" aria-label="Siguiente"><i class="fas fa-arrow-right"></i></button>
+            </div>
         </div>
-        <div class="owl-carousel testimonial-carousel">
+        <div class="quote-row mt-5">
             <% testimonials.forEach(t => { %>
-            <div class="testimonial-item">
-                <img src="<%= t.photo %>" alt="<%= t.name %>">
-                <p>"<%= t.message %>"</p>
-                <h5 class="mb-0"><%= t.name %></h5>
-                <span class="text-secondary"><%= t.role %></span>
-            </div>
-            <% }) %>
-        </div>
-    </div>
-</div>
-<!-- Testimonial End -->
-
-<!-- Blog Start -->
-<% if (posts.length) { %>
-<div class="container-fluid py-5">
-    <div class="container">
-        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-            <h6 class="text-secondary text-uppercase">Blog</h6>
-            <h1>Últimas publicaciones</h1>
-        </div>
-        <div class="row g-4">
-            <% posts.forEach(p => { %>
-            <div class="col-lg-4 col-md-6">
-                <div class="blog-item">
-                    <img src="<%= p.image %>" alt="<%= p.title %>">
-                    <div class="blog-content">
-                        <div class="blog-icon">
-                            <small><i class="fas fa-user"></i> <%= p.author %></small>
-                        </div>
-                        <h5><a href="/blog/<%= p.slug %>" class="text-dark"><%= p.title %></a></h5>
-                        <p><%= p.excerpt %></p>
-                        <a href="/blog/<%= p.slug %>" class="blog-btn">Leer más <i class="fas fa-arrow-right ms-1"></i></a>
+            <div class="quote-card">
+                <div class="quote-card__mark">&ldquo;</div>
+                <p class="msg"><%= t.message %></p>
+                <div class="quote-card__person">
+                    <% if (media.isUploaded(t.photo)) { %>
+                        <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                    <% } else { %>
+                        <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                    <% } %>
+                    <div>
+                        <h4><%= t.name %></h4>
+                        <span><%= t.role %></span>
                     </div>
                 </div>
             </div>
             <% }) %>
         </div>
     </div>
-</div>
+</section>
 <% } %>
-<!-- Blog End -->
+
+<!-- Blog -->
+<% if (posts.length) { %>
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-head section-head--center mx-auto">
+            <div class="kicker" style="justify-content:center;">Blog</div>
+            <h2>Últimas publicaciones</h2>
+        </div>
+        <div class="blog-grid">
+            <% posts.forEach((p, i) => { %>
+            <div class="post-card">
+                <div class="post-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
+                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="post-card__body">
+                    <div class="post-card__meta"><i class="fas fa-user"></i><%= p.author %></div>
+                    <h3><a href="/blog/<%= p.slug %>" class="text-dark"><%= p.title %></a></h3>
+                    <p><%= p.excerpt %></p>
+                    <a href="/blog/<%= p.slug %>" class="post-card__link">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+<% } %>
 
 <%- include('../partials/footer') %>
