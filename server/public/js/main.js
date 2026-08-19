@@ -1,14 +1,16 @@
+// Oculta el spinner de carga sin depender de jQuery, para que nunca se quede
+// bloqueando la página si algún script externo falla en cargar.
+(function () {
+    setTimeout(function () {
+        var el = document.getElementById('spinner');
+        if (el) el.classList.remove('show');
+    }, 300);
+})();
+
 (function ($) {
     "use strict";
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            var el = document.getElementById('spinner');
-            if (el) el.classList.remove('show');
-        }, 300);
-    };
-    spinner();
+    if (!$) return;
 
     // Sticky navbar shadow on scroll
     $(window).scroll(function () {
@@ -78,4 +80,4 @@
             }, { offset: '90%' });
         });
     }
-})(jQuery);
+})(window.jQuery);

@@ -1,21 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700">
   <defs>
-    <linearGradient id="gcarousel-2" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="gc2" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0b2545"/>
       <stop offset="100%" stop-color="#071a33"/>
     </linearGradient>
-    <clipPath id="ccarousel-2"><rect width="1600" height="700" rx="0"/></clipPath>
   </defs>
-  <g clip-path="url(#ccarousel-2)">
-    <rect width="1600" height="700" fill="url(#gcarousel-2)"/>
-    <circle cx="1360" cy="84" r="315" fill="#f2a71b" opacity="0.10"/>
-    <circle cx="160" cy="665" r="244.99999999999997" fill="#ffffff" opacity="0.06"/>
-    <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
-      <line x1="0" y1="0" x2="1600" y2="0"/><line x1="0" y1="116.66666666666667" x2="1600" y2="116.66666666666667"/><line x1="0" y1="233.33333333333334" x2="1600" y2="233.33333333333334"/><line x1="0" y1="350" x2="1600" y2="350"/><line x1="0" y1="466.6666666666667" x2="1600" y2="466.6666666666667"/><line x1="0" y1="583.3333333333334" x2="1600" y2="583.3333333333334"/>
-    </g>
-    <rect x="697.6" y="260.4" width="204.8" height="73.6" rx="6" fill="#f2a71b"/>
-    <text x="800" y="314.8" font-family="Arial, Helvetica, sans-serif" font-size="39.68" font-weight="700" fill="#071a33" text-anchor="middle" dominant-baseline="middle">MS</text>
-    <text x="800" y="385.2" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">Moquegua Soft</text>
-    <text x="800" y="439.6" font-family="Arial, Helvetica, sans-serif" font-size="27" fill="#ffffff" fill-opacity="0.75" text-anchor="middle" dominant-baseline="middle">ERP, CMS y desarrollo web</text>
+  <rect width="1600" height="700" fill="url(#gc2)"/>
+  <circle cx="1312" cy="126" r="385.00000000000006" fill="#f2a71b" opacity="0.08"/>
+  <circle cx="192" cy="644" r="315" fill="#ffffff" opacity="0.05"/>
+  <g stroke="#ffffff" stroke-opacity="0.06" stroke-width="1.5">
+    <line x1="0" y1="0" x2="1600" y2="0"/><line x1="0" y1="87.5" x2="1600" y2="87.5"/><line x1="0" y1="175" x2="1600" y2="175"/><line x1="0" y1="262.5" x2="1600" y2="262.5"/><line x1="0" y1="350" x2="1600" y2="350"/><line x1="0" y1="437.5" x2="1600" y2="437.5"/><line x1="0" y1="525" x2="1600" y2="525"/><line x1="0" y1="612.5" x2="1600" y2="612.5"/>
+  </g>
+  <g opacity="0.14">
+    <rect x="96" y="196.00000000000003" width="256" height="112" rx="14" fill="none" stroke="#f2a71b" stroke-width="3"/>
+    <circle cx="1440" cy="525" r="63" fill="none" stroke="#f2a71b" stroke-width="3"/>
   </g>
 </svg>

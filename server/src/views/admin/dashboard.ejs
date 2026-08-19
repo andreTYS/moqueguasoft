@@ -66,7 +66,7 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="/js/chart.umd.min.js"></script>
 <script>
     const months = <%- JSON.stringify(monthly.map(m => m.ym)) %>;
     const allMonths = Array.from(new Set([...months, ...<%- JSON.stringify(monthlyExpenses.map(m => m.ym)) %>])).sort();
