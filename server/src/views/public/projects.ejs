@@ -4,13 +4,13 @@
 
 <section class="section">
     <div class="container">
-        <div class="section-head section-head--center mx-auto">
+        <div class="section-head section-head--center mx-auto reveal">
             <div class="kicker" style="justify-content:center;">Portafolio</div>
             <h2>Proyectos que hemos desarrollado</h2>
         </div>
         <div class="work-grid">
             <% projects.forEach((p, i) => { %>
-            <div class="work-card">
+            <div class="work-card reveal reveal--<%= (i % 6) + 1 %>">
                 <div class="work-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
                     <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
                     <i class="fas fa-diagram-project"></i>

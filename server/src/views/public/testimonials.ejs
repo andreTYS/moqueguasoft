@@ -5,8 +5,8 @@
 <section class="section">
     <div class="container">
         <div class="row g-4">
-            <% testimonials.forEach(t => { %>
-            <div class="col-lg-6">
+            <% testimonials.forEach((t, i) => { %>
+            <div class="col-lg-6 reveal reveal--<%= (i % 6) + 1 %>">
                 <div class="quote-card" style="width:100%;">
                     <div class="quote-card__mark">&ldquo;</div>
                     <p class="msg"><%= t.message %></p>

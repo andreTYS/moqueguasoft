@@ -6,7 +6,7 @@
     <div class="container">
         <div class="blog-grid">
             <% posts.forEach((p, i) => { %>
-            <div class="post-card">
+            <div class="post-card reveal reveal--<%= (i % 6) + 1 %>">
                 <div class="post-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
                     <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
                     <i class="fas fa-newspaper"></i>

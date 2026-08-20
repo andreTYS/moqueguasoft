@@ -5,16 +5,10 @@
 <section class="section">
     <div class="container">
         <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-                <div class="about__visual">
-                    <div class="about__card-main"></div>
-                    <div class="about__card-float">
-                        <div class="value">100% remoto</div>
-                        <div class="label">Trabajamos con negocios de todo el Perú</div>
-                    </div>
-                </div>
+            <div class="col-lg-6 reveal">
+                <%- include('../partials/svg-about', { floatValue: '100% remoto', floatLabel: 'Trabajamos con negocios de todo el Perú' }) %>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 reveal reveal--2">
                 <div class="kicker">Quiénes somos</div>
                 <h2 class="mb-4" style="font-size:clamp(1.7rem,3vw,2.2rem); font-weight:700;"><%= content.intro_title %></h2>
                 <p class="mb-4"><%= content.intro_body %></p>
@@ -26,13 +20,13 @@
 
 <section class="section section--alt">
     <div class="container">
-        <div class="section-head section-head--center mx-auto">
+        <div class="section-head section-head--center mx-auto reveal">
             <div class="kicker" style="justify-content:center;">Nuestro equipo</div>
             <h2>Personas detrás de Moquegua Soft</h2>
         </div>
         <div class="team-grid">
-            <% team.forEach(t => { %>
-            <div class="team-card">
+            <% team.forEach((t, i) => { %>
+            <div class="team-card reveal reveal--<%= (i % 6) + 1 %>">
                 <% if (media.isUploaded(t.photo)) { %>
                     <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
                 <% } else { %>

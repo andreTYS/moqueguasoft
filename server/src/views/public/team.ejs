@@ -4,13 +4,13 @@
 
 <section class="section">
     <div class="container">
-        <div class="section-head section-head--center mx-auto">
+        <div class="section-head section-head--center mx-auto reveal">
             <div class="kicker" style="justify-content:center;">Nuestro equipo</div>
             <h2>Conoce a las personas de Moquegua Soft</h2>
         </div>
         <div class="team-grid">
-            <% team.forEach(t => { %>
-            <div class="team-card">
+            <% team.forEach((t, i) => { %>
+            <div class="team-card reveal reveal--<%= (i % 6) + 1 %>">
                 <% if (media.isUploaded(t.photo)) { %>
                     <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
                 <% } else { %>

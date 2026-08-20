@@ -54,7 +54,7 @@
 
 <!-- Stats flotantes -->
 <div class="container">
-    <div class="stats-strip">
+    <div class="stats-strip reveal">
         <div class="row g-0">
             <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="116">0</div><div class="stat__label">Proyectos completados</div></div>
             <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="78">0</div><div class="stat__label">Clientes satisfechos</div></div>
@@ -68,16 +68,10 @@
 <section class="section">
     <div class="container">
         <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-                <div class="about__visual">
-                    <div class="about__card-main"></div>
-                    <div class="about__card-float">
-                        <div class="value">6 años</div>
-                        <div class="label">Construyendo software para negocios locales</div>
-                    </div>
-                </div>
+            <div class="col-lg-6 reveal">
+                <%- include('../partials/svg-about') %>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 reveal reveal--2">
                 <div class="kicker">Sobre nosotros</div>
                 <h2 class="mb-4" style="font-size:clamp(1.7rem,3vw,2.2rem); font-weight:700;"><%= content.about_title %></h2>
                 <p class="mb-4"><%= content.about_body %></p>
@@ -95,13 +89,13 @@
 <!-- Servicios (bento) -->
 <section class="section section--alt">
     <div class="container">
-        <div class="section-head section-head--center mx-auto">
+        <div class="section-head section-head--center mx-auto reveal">
             <div class="kicker" style="justify-content:center;">Nuestros servicios</div>
             <h2>Soluciones pensadas para tu negocio</h2>
         </div>
         <div class="bento">
             <% services.forEach((s, i) => { %>
-            <div class="bento__item <%= i === 0 ? 'bento__item--feature' : '' %>">
+            <div class="bento__item <%= i === 0 ? 'bento__item--feature' : '' %> reveal reveal--<%= (i % 6) + 1 %>">
                 <div class="bento__index">0<%= i + 1 %></div>
                 <div>
                     <div class="bento__icon"><i class="<%= s.icon %>"></i></div>
@@ -117,7 +111,7 @@
 <!-- Proyectos -->
 <section class="section">
     <div class="container">
-        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3 reveal">
             <div class="section-head mb-0">
                 <div class="kicker">Portafolio</div>
                 <h2>Proyectos recientes</h2>
@@ -126,7 +120,7 @@
         </div>
         <div class="work-grid mt-5">
             <% projects.forEach((p, i) => { %>
-            <div class="work-card">
+            <div class="work-card reveal reveal--<%= (i % 6) + 1 %>">
                 <div class="work-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
                     <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
                     <i class="fas fa-diagram-project"></i>
@@ -145,13 +139,13 @@
 <!-- Equipo -->
 <section class="section section--alt">
     <div class="container">
-        <div class="section-head section-head--center mx-auto">
+        <div class="section-head section-head--center mx-auto reveal">
             <div class="kicker" style="justify-content:center;">Nuestro equipo</div>
             <h2>Conoce al equipo</h2>
         </div>
         <div class="team-grid">
-            <% team.forEach(t => { %>
-            <div class="team-card">
+            <% team.forEach((t, i) => { %>
+            <div class="team-card reveal reveal--<%= (i % 6) + 1 %>">
                 <% if (media.isUploaded(t.photo)) { %>
                     <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
                 <% } else { %>
@@ -175,7 +169,7 @@
 <% if (testimonials.length) { %>
 <section class="section">
     <div class="container">
-        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3 reveal">
             <div class="section-head mb-0">
                 <div class="kicker">Testimonios</div>
                 <h2>Lo que dicen nuestros clientes</h2>
@@ -212,13 +206,13 @@
 <% if (posts.length) { %>
 <section class="section section--alt">
     <div class="container">
-        <div class="section-head section-head--center mx-auto">
+        <div class="section-head section-head--center mx-auto reveal">
             <div class="kicker" style="justify-content:center;">Blog</div>
             <h2>Últimas publicaciones</h2>
         </div>
         <div class="blog-grid">
             <% posts.forEach((p, i) => { %>
-            <div class="post-card">
+            <div class="post-card reveal reveal--<%= (i % 6) + 1 %>">
                 <div class="post-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
                     <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
                     <i class="fas fa-newspaper"></i>
