@@ -1,0 +1,34 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted"><%= clients.length %> cliente(s)</span>
+    <a href="/admin/clientes/nuevo" class="btn btn-ms-primary btn-sm"><i class="bi bi-plus-lg me-1"></i>Nuevo cliente</a>
+</div>
+
+<div class="table-card">
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead><tr><th>Nombre</th><th>Empresa</th><th>Contacto</th><th></th></tr></thead>
+            <tbody>
+                <% clients.forEach(c => { %>
+                <tr>
+                    <td><%= c.name %></td>
+                    <td><%= c.company || '—' %></td>
+                    <td><small><%= c.email || '' %> <%= c.phone ? ' · ' + c.phone : '' %></small></td>
+                    <td class="text-end">
+                        <a href="/admin/clientes/<%= c.id %>/editar" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></a>
+                        <form action="/admin/clientes/<%= c.id %>/eliminar" method="POST" class="d-inline" onsubmit="return confirm('¿Eliminar este cliente?');">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+                <% if (!clients.length) { %><tr><td colspan="4" class="text-center text-muted py-4">Aún no hay clientes.</td></tr><% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/shell-end') %>

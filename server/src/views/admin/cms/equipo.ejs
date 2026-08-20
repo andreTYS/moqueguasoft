@@ -1,0 +1,46 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="row g-3 mb-4">
+    <% team.forEach(t => { %>
+    <div class="col-md-4">
+        <div class="table-card">
+            <form method="POST" action="/admin/cms/equipo/<%= t.id %>" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <img src="<%= t.photo %>" class="mb-2" style="width:90px;height:90px;object-fit:cover;border-radius:50%;" alt="">
+                <div class="mb-2"><input type="file" name="photo" accept="image/*" class="form-control form-control-sm"></div>
+                <div class="mb-2"><input type="text" name="name" class="form-control form-control-sm" value="<%= t.name %>" placeholder="Nombre"></div>
+                <div class="mb-2"><input type="text" name="role" class="form-control form-control-sm" value="<%= t.role %>" placeholder="Cargo"></div>
+                <div class="mb-2"><input type="url" name="facebook" class="form-control form-control-sm" value="<%= t.facebook %>" placeholder="Facebook"></div>
+                <div class="mb-2"><input type="url" name="linkedin" class="form-control form-control-sm" value="<%= t.linkedin %>" placeholder="LinkedIn"></div>
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <label class="form-label mb-0 small">Orden</label>
+                    <input type="number" name="sort_order" class="form-control form-control-sm" style="width:70px;" value="<%= t.sort_order %>">
+                    <div class="form-check ms-auto">
+                        <input type="checkbox" name="active" class="form-check-input" id="tactive<%= t.id %>" <%= t.active ? 'checked' : '' %>>
+                        <label class="form-check-label small" for="tactive<%= t.id %>">Activo</label>
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-ms-primary">Guardar</button>
+                    <button class="btn btn-sm btn-outline-danger" formaction="/admin/cms/equipo/<%= t.id %>/eliminar" onclick="return confirm('¿Eliminar integrante?');">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <% }) %>
+</div>
+
+<div class="table-card" style="max-width:480px;">
+    <h6 class="mb-3">Agregar integrante</h6>
+    <form method="POST" action="/admin/cms/equipo/nuevo" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="mb-2"><input type="file" name="photo" accept="image/*" class="form-control form-control-sm"></div>
+        <div class="mb-2"><input type="text" name="name" class="form-control form-control-sm" placeholder="Nombre" required></div>
+        <div class="mb-2"><input type="text" name="role" class="form-control form-control-sm" placeholder="Cargo"></div>
+        <div class="mb-2"><input type="number" name="sort_order" class="form-control form-control-sm" placeholder="Orden" value="0"></div>
+        <button class="btn btn-sm btn-ms-primary">Agregar</button>
+    </form>
+</div>
+
+<%- include('../partials/shell-end') %>

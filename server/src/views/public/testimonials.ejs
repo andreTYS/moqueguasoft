@@ -1,0 +1,31 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { pageHeaderTitle: 'Testimonios' }) %>
+
+<section class="section">
+    <div class="container">
+        <div class="row g-4">
+            <% testimonials.forEach((t, i) => { %>
+            <div class="col-lg-6 reveal reveal--<%= (i % 6) + 1 %>">
+                <div class="quote-card" style="width:100%;">
+                    <div class="quote-card__mark">&ldquo;</div>
+                    <p class="msg"><%= t.message %></p>
+                    <div class="quote-card__person">
+                        <% if (media.isUploaded(t.photo)) { %>
+                            <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                        <% } else { %>
+                            <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                        <% } %>
+                        <div>
+                            <h4><%= t.name %></h4>
+                            <span><%= t.role %></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/footer') %>

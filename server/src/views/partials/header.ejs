@@ -1,0 +1,42 @@
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow" role="status"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <header class="ms-nav" id="msNav">
+        <div class="container">
+            <div class="ms-nav__inner">
+                <a href="/" class="ms-nav__brand">Moquegua<span>Soft</span></a>
+
+                <nav class="ms-nav__links">
+                    <a href="/" class="ms-nav__link <%= currentPath === '/' ? 'active' : '' %>">Inicio</a>
+                    <a href="/nosotros" class="ms-nav__link <%= currentPath === '/nosotros' ? 'active' : '' %>">Nosotros</a>
+                    <a href="/servicios" class="ms-nav__link <%= currentPath === '/servicios' ? 'active' : '' %>">Servicios</a>
+                    <a href="/proyectos" class="ms-nav__link <%= currentPath === '/proyectos' ? 'active' : '' %>">Proyectos</a>
+                    <a href="/blog" class="ms-nav__link <%= currentPath.startsWith('/blog') ? 'active' : '' %>">Blog</a>
+                    <a href="/equipo" class="ms-nav__link <%= currentPath === '/equipo' ? 'active' : '' %>">Equipo</a>
+                </nav>
+
+                <a href="/contacto" class="btn-pill btn-pill--solid btn-pill--sm ms-nav__cta-desktop">
+                    Hablemos <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <button class="ms-nav__toggle" id="navToggle" aria-label="Abrir menú">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="ms-nav__mobile" id="navMobile">
+                <a href="/" class="ms-nav__link <%= currentPath === '/' ? 'active' : '' %>">Inicio</a>
+                <a href="/nosotros" class="ms-nav__link <%= currentPath === '/nosotros' ? 'active' : '' %>">Nosotros</a>
+                <a href="/servicios" class="ms-nav__link <%= currentPath === '/servicios' ? 'active' : '' %>">Servicios</a>
+                <a href="/proyectos" class="ms-nav__link <%= currentPath === '/proyectos' ? 'active' : '' %>">Proyectos</a>
+                <a href="/blog" class="ms-nav__link <%= currentPath.startsWith('/blog') ? 'active' : '' %>">Blog</a>
+                <a href="/equipo" class="ms-nav__link <%= currentPath === '/equipo' ? 'active' : '' %>">Equipo</a>
+                <a href="/testimonios" class="ms-nav__link <%= currentPath === '/testimonios' ? 'active' : '' %>">Testimonios</a>
+                <a href="/contacto" class="btn-pill btn-pill--solid btn-pill--sm mt-2">Hablemos <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </header>

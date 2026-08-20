@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title><%= typeof pageTitle !== 'undefined' ? pageTitle + ' - ' + siteName : siteName %></title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="<%= typeof pageDescription !== 'undefined' ? pageDescription : (settings.tagline || '') %>">
+
+    <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet (empaquetado localmente, sin depender de CDNs externos) -->
+    <link href="/lib/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="/lib/fontawesome/css/v4-shims.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Bootstrap (sólo grid/reset) + estilos propios del sitio -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+</head>

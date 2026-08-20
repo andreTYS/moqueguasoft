@@ -1,0 +1,48 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="row g-3 mb-4">
+    <% projects.forEach(p => { %>
+    <div class="col-md-4">
+        <div class="table-card">
+            <form method="POST" action="/admin/cms/proyectos/<%= p.id %>" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <img src="<%= p.image %>" class="w-100 mb-2" style="height:120px;object-fit:cover;border-radius:8px;" alt="">
+                <div class="mb-2"><input type="file" name="image" accept="image/*" class="form-control form-control-sm"></div>
+                <div class="mb-2"><input type="text" name="title" class="form-control form-control-sm" value="<%= p.title %>" placeholder="Título"></div>
+                <div class="mb-2"><input type="text" name="category" class="form-control form-control-sm" value="<%= p.category %>" placeholder="Categoría"></div>
+                <div class="mb-2"><textarea name="description" class="form-control form-control-sm" rows="2" placeholder="Descripción"><%= p.description %></textarea></div>
+                <div class="mb-2"><input type="url" name="link" class="form-control form-control-sm" value="<%= p.link %>" placeholder="Enlace (opcional)"></div>
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <label class="form-label mb-0 small">Orden</label>
+                    <input type="number" name="sort_order" class="form-control form-control-sm" style="width:70px;" value="<%= p.sort_order %>">
+                    <div class="form-check ms-auto">
+                        <input type="checkbox" name="active" class="form-check-input" id="pactive<%= p.id %>" <%= p.active ? 'checked' : '' %>>
+                        <label class="form-check-label small" for="pactive<%= p.id %>">Activo</label>
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-ms-primary">Guardar</button>
+                    <button class="btn btn-sm btn-outline-danger" formaction="/admin/cms/proyectos/<%= p.id %>/eliminar" onclick="return confirm('¿Eliminar este proyecto?');">Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <% }) %>
+</div>
+
+<div class="table-card" style="max-width:480px;">
+    <h6 class="mb-3">Agregar proyecto</h6>
+    <form method="POST" action="/admin/cms/proyectos/nuevo" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="mb-2"><input type="file" name="image" accept="image/*" class="form-control form-control-sm"></div>
+        <div class="mb-2"><input type="text" name="title" class="form-control form-control-sm" placeholder="Título" required></div>
+        <div class="mb-2"><input type="text" name="category" class="form-control form-control-sm" placeholder="Categoría"></div>
+        <div class="mb-2"><textarea name="description" class="form-control form-control-sm" rows="2" placeholder="Descripción"></textarea></div>
+        <div class="mb-2"><input type="url" name="link" class="form-control form-control-sm" placeholder="Enlace (opcional)"></div>
+        <div class="mb-2"><input type="number" name="sort_order" class="form-control form-control-sm" placeholder="Orden" value="0"></div>
+        <button class="btn btn-sm btn-ms-primary">Agregar</button>
+    </form>
+</div>
+
+<%- include('../partials/shell-end') %>

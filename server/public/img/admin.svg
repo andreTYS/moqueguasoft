@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="gadmin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b2545"/>
+      <stop offset="100%" stop-color="#071a33"/>
+    </linearGradient>
+    <clipPath id="cadmin"><rect width="300" height="300" rx="150"/></clipPath>
+  </defs>
+  <g clip-path="url(#cadmin)">
+    <rect width="300" height="300" fill="url(#gadmin)"/>
+    <circle cx="255" cy="36" r="135" fill="#f2a71b" opacity="0.10"/>
+    <circle cx="30" cy="285" r="105" fill="#ffffff" opacity="0.06"/>
+    <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
+      <line x1="0" y1="0" x2="300" y2="0"/><line x1="0" y1="50" x2="300" y2="50"/><line x1="0" y1="100" x2="300" y2="100"/><line x1="0" y1="150" x2="300" y2="150"/><line x1="0" y1="200" x2="300" y2="200"/><line x1="0" y1="250" x2="300" y2="250"/>
+    </g>
+    <rect x="106.8" y="112.2" width="86.4" height="31.049999999999997" rx="6" fill="#f2a71b"/>
+    <text x="150" y="135.15" font-family="Arial, Helvetica, sans-serif" font-size="16.74" font-weight="700" fill="#071a33" text-anchor="middle" dominant-baseline="middle">MS</text>
+    <text x="150" y="164.85" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">Admin</text>
+    
+  </g>
+</svg>

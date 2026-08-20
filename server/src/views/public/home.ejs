@@ -1,0 +1,233 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero__blob hero__blob--a"></div>
+    <div class="hero__blob hero__blob--b"></div>
+    <div class="hero__grain"></div>
+    <div class="container hero__inner">
+        <div class="hero__grid">
+            <div>
+                <div class="hero__badge mb-3"><i class="fas fa-circle" style="font-size:.5rem;"></i> Disponibles para nuevos proyectos</div>
+                <div id="heroSlides" style="position:relative;">
+                    <% slides.forEach((slide, i) => { %>
+                    <div class="hero__slide" style="opacity:<%= i === 0 ? 1 : 0 %>; <%= i === 0 ? 'position:relative;' : 'position:absolute; top:0; left:0;' %>">
+                        <h1 class="hero__title"><%= slide.title %></h1>
+                        <p class="hero__subtitle"><%= slide.subtitle %></p>
+                    </div>
+                    <% }) %>
+                </div>
+                <div class="hero__actions">
+                    <a href="/servicios" class="btn-pill btn-pill--solid">Nuestros servicios <i class="fas fa-arrow-right"></i></a>
+                    <a href="/contacto" class="btn-pill btn-pill--ghost-light">Hablar con nosotros</a>
+                </div>
+                <% if (slides.length > 1) { %>
+                <div class="hero__dots" id="heroDots">
+                    <% slides.forEach((s, i) => { %><button class="<%= i === 0 ? 'active' : '' %>" aria-label="Slide <%= i+1 %>"></button><% }) %>
+                </div>
+                <% } %>
+            </div>
+
+            <div class="hero__visual d-none d-lg-block">
+                <div class="hero__panel hero__panel--main">
+                    <div class="hero__mock-dots"><span></span><span></span><span></span></div>
+                    <div class="hero__mock-line" style="width:70%"></div>
+                    <div class="hero__mock-line" style="width:45%"></div>
+                    <div class="hero__mock-bars">
+                        <span style="height:40%"></span><span style="height:70%"></span><span style="height:55%"></span>
+                        <span style="height:90%"></span><span style="height:35%"></span><span style="height:65%"></span>
+                    </div>
+                </div>
+                <div class="hero__panel hero__panel--float1">
+                    <div class="hero__stat-label mb-1"><i class="fas fa-arrow-trend-up me-1"></i> Ingresos del mes</div>
+                    <div class="hero__stat-value">+S/ 4,010</div>
+                </div>
+                <div class="hero__panel hero__panel--float2">
+                    <div class="hero__stat-label mb-1"><i class="fas fa-code me-1"></i> CMS + ERP</div>
+                    <div class="hero__stat-value" style="font-size:1.05rem;">Un solo panel</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats flotantes -->
+<div class="container">
+    <div class="stats-strip reveal">
+        <div class="row g-0">
+            <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="116">0</div><div class="stat__label">Proyectos completados</div></div>
+            <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="78">0</div><div class="stat__label">Clientes satisfechos</div></div>
+            <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="6">0</div><div class="stat__label">Años de experiencia</div></div>
+            <div class="col-6 col-md-3 stat"><div class="stat__value" data-count="24">0</div><div class="stat__label">Horas de soporte</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- About -->
+<section class="section">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 reveal">
+                <%- include('../partials/svg-about') %>
+            </div>
+            <div class="col-lg-6 reveal reveal--2">
+                <div class="kicker">Sobre nosotros</div>
+                <h2 class="mb-4" style="font-size:clamp(1.7rem,3vw,2.2rem); font-weight:700;"><%= content.about_title %></h2>
+                <p class="mb-4"><%= content.about_body %></p>
+                <ul class="checklist">
+                    <li><i class="fas fa-circle-check"></i> Sitio web + panel de administración en un solo lugar</li>
+                    <li><i class="fas fa-circle-check"></i> Control de ingresos, gastos y clientes sin hojas de cálculo</li>
+                    <li><i class="fas fa-circle-check"></i> Soporte cercano, en español, con base en Moquegua</li>
+                </ul>
+                <a href="/nosotros" class="btn-pill btn-pill--ghost">Conócenos <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Servicios (bento) -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-head section-head--center mx-auto reveal">
+            <div class="kicker" style="justify-content:center;">Nuestros servicios</div>
+            <h2>Soluciones pensadas para tu negocio</h2>
+        </div>
+        <div class="bento">
+            <% services.forEach((s, i) => { %>
+            <div class="bento__item <%= i === 0 ? 'bento__item--feature' : '' %> reveal reveal--<%= (i % 6) + 1 %>">
+                <div class="bento__index">0<%= i + 1 %></div>
+                <div>
+                    <div class="bento__icon"><i class="<%= s.icon %>"></i></div>
+                    <h3><%= s.title %></h3>
+                    <p><%= s.description %></p>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Proyectos -->
+<section class="section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3 reveal">
+            <div class="section-head mb-0">
+                <div class="kicker">Portafolio</div>
+                <h2>Proyectos recientes</h2>
+            </div>
+            <a href="/proyectos" class="btn-pill btn-pill--ghost btn-pill--sm">Ver todos <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="work-grid mt-5">
+            <% projects.forEach((p, i) => { %>
+            <div class="work-card reveal reveal--<%= (i % 6) + 1 %>">
+                <div class="work-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
+                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
+                    <i class="fas fa-diagram-project"></i>
+                    <span class="work-card__tag"><%= p.category %></span>
+                </div>
+                <div class="work-card__body">
+                    <h3><%= p.title %></h3>
+                    <% if (p.description) { %><p><%= p.description %></p><% } %>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Equipo -->
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-head section-head--center mx-auto reveal">
+            <div class="kicker" style="justify-content:center;">Nuestro equipo</div>
+            <h2>Conoce al equipo</h2>
+        </div>
+        <div class="team-grid">
+            <% team.forEach((t, i) => { %>
+            <div class="team-card reveal reveal--<%= (i % 6) + 1 %>">
+                <% if (media.isUploaded(t.photo)) { %>
+                    <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                <% } else { %>
+                    <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                <% } %>
+                <h3><%= t.name %></h3>
+                <div class="role"><%= t.role %></div>
+                <% if (t.facebook || t.linkedin) { %>
+                <div class="team-card__social">
+                    <% if (t.facebook) { %><a href="<%= t.facebook %>"><i class="fab fa-facebook-f"></i></a><% } %>
+                    <% if (t.linkedin) { %><a href="<%= t.linkedin %>"><i class="fab fa-linkedin-in"></i></a><% } %>
+                </div>
+                <% } %>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonios -->
+<% if (testimonials.length) { %>
+<section class="section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-3 reveal">
+            <div class="section-head mb-0">
+                <div class="kicker">Testimonios</div>
+                <h2>Lo que dicen nuestros clientes</h2>
+            </div>
+            <div class="quote-nav">
+                <button data-dir="prev" aria-label="Anterior"><i class="fas fa-arrow-left"></i></button>
+                <button data-dir="next" aria-label="Siguiente"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+        <div class="quote-row mt-5">
+            <% testimonials.forEach(t => { %>
+            <div class="quote-card">
+                <div class="quote-card__mark">&ldquo;</div>
+                <p class="msg"><%= t.message %></p>
+                <div class="quote-card__person">
+                    <% if (media.isUploaded(t.photo)) { %>
+                        <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                    <% } else { %>
+                        <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                    <% } %>
+                    <div>
+                        <h4><%= t.name %></h4>
+                        <span><%= t.role %></span>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+<% } %>
+
+<!-- Blog -->
+<% if (posts.length) { %>
+<section class="section section--alt">
+    <div class="container">
+        <div class="section-head section-head--center mx-auto reveal">
+            <div class="kicker" style="justify-content:center;">Blog</div>
+            <h2>Últimas publicaciones</h2>
+        </div>
+        <div class="blog-grid">
+            <% posts.forEach((p, i) => { %>
+            <div class="post-card reveal reveal--<%= (i % 6) + 1 %>">
+                <div class="post-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
+                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="post-card__body">
+                    <div class="post-card__meta"><i class="fas fa-user"></i><%= p.author %></div>
+                    <h3><a href="/blog/<%= p.slug %>" class="text-dark"><%= p.title %></a></h3>
+                    <p><%= p.excerpt %></p>
+                    <a href="/blog/<%= p.slug %>" class="post-card__link">Leer más <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+<% } %>
+
+<%- include('../partials/footer') %>

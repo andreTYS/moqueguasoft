@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted"><%= projects.length %> proyecto(s)</span>
+    <a href="/admin/proyectos/nuevo" class="btn btn-ms-primary btn-sm"><i class="bi bi-plus-lg me-1"></i>Nuevo proyecto</a>
+</div>
+
+<div class="table-card">
+    <div class="table-responsive">
+        <table class="table align-middle">
+            <thead><tr><th>Nombre</th><th>Cliente</th><th>Estado</th><th class="text-end">Presupuesto</th><th></th></tr></thead>
+            <tbody>
+                <% projects.forEach(p => { %>
+                <tr>
+                    <td><%= p.name %></td>
+                    <td><%= p.client_name || '—' %></td>
+                    <td><span class="badge bg-secondary text-dark text-capitalize"><%= p.status %></span></td>
+                    <td class="text-end">S/ <%= p.budget.toFixed(2) %></td>
+                    <td class="text-end">
+                        <a href="/admin/proyectos/<%= p.id %>/editar" class="btn btn-sm btn-outline-secondary"><i class="bi bi-pencil"></i></a>
+                        <form action="/admin/proyectos/<%= p.id %>/eliminar" method="POST" class="d-inline" onsubmit="return confirm('¿Eliminar este proyecto?');">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+                <% if (!projects.length) { %><tr><td colspan="5" class="text-center text-muted py-4">Aún no hay proyectos.</td></tr><% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/shell-end') %>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="gteam-4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b2545"/>
+      <stop offset="100%" stop-color="#071a33"/>
+    </linearGradient>
+    <clipPath id="cteam-4"><rect width="500" height="500" rx="250"/></clipPath>
+  </defs>
+  <g clip-path="url(#cteam-4)">
+    <rect width="500" height="500" fill="url(#gteam-4)"/>
+    <circle cx="425" cy="60" r="225" fill="#f2a71b" opacity="0.10"/>
+    <circle cx="50" cy="475" r="175" fill="#ffffff" opacity="0.06"/>
+    <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
+      <line x1="0" y1="0" x2="500" y2="0"/><line x1="0" y1="83.33333333333333" x2="500" y2="83.33333333333333"/><line x1="0" y1="166.66666666666666" x2="500" y2="166.66666666666666"/><line x1="0" y1="250" x2="500" y2="250"/><line x1="0" y1="333.3333333333333" x2="500" y2="333.3333333333333"/><line x1="0" y1="416.66666666666663" x2="500" y2="416.66666666666663"/>
+    </g>
+    <rect x="178" y="187" width="144" height="51.74999999999999" rx="6" fill="#f2a71b"/>
+    <text x="250" y="225.25" font-family="Arial, Helvetica, sans-serif" font-size="27.9" font-weight="700" fill="#071a33" text-anchor="middle" dominant-baseline="middle">MS</text>
+    <text x="250" y="274.75" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">Equipo</text>
+    
+  </g>
+</svg>

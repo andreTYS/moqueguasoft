@@ -1,0 +1,29 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { pageHeaderTitle: 'Servicios' }) %>
+
+<section class="section">
+    <div class="container">
+        <div class="section-head section-head--center mx-auto reveal">
+            <div class="kicker" style="justify-content:center;">Nuestros servicios</div>
+            <h2>Soluciones construidas para tu negocio</h2>
+        </div>
+        <div class="bento">
+            <% services.forEach((s, i) => { %>
+            <div class="bento__item <%= i === 0 ? 'bento__item--feature' : '' %> reveal reveal--<%= (i % 6) + 1 %>">
+                <div class="bento__index">0<%= i + 1 %></div>
+                <div>
+                    <div class="bento__icon"><i class="<%= s.icon %>"></i></div>
+                    <h3><%= s.title %></h3>
+                    <p><%= s.description %></p>
+                </div>
+            </div>
+            <% }) %>
+            <% if (!services.length) { %>
+            <p class="text-center">Aún no hay servicios publicados. Agrégalos desde el panel de administración.</p>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/footer') %>

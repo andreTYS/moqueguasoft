@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="gtestimonial-1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b2545"/>
+      <stop offset="100%" stop-color="#071a33"/>
+    </linearGradient>
+    <clipPath id="ctestimonial-1"><rect width="200" height="200" rx="100"/></clipPath>
+  </defs>
+  <g clip-path="url(#ctestimonial-1)">
+    <rect width="200" height="200" fill="url(#gtestimonial-1)"/>
+    <circle cx="170" cy="24" r="90" fill="#f2a71b" opacity="0.10"/>
+    <circle cx="20" cy="190" r="70" fill="#ffffff" opacity="0.06"/>
+    <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
+      <line x1="0" y1="0" x2="200" y2="0"/><line x1="0" y1="33.333333333333336" x2="200" y2="33.333333333333336"/><line x1="0" y1="66.66666666666667" x2="200" y2="66.66666666666667"/><line x1="0" y1="100" x2="200" y2="100"/><line x1="0" y1="133.33333333333334" x2="200" y2="133.33333333333334"/><line x1="0" y1="166.66666666666669" x2="200" y2="166.66666666666669"/>
+    </g>
+    <rect x="71.2" y="74.8" width="57.6" height="20.7" rx="6" fill="#f2a71b"/>
+    <text x="100" y="90.1" font-family="Arial, Helvetica, sans-serif" font-size="11.16" font-weight="700" fill="#071a33" text-anchor="middle" dominant-baseline="middle">MS</text>
+    <text x="100" y="109.9" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">Cliente</text>
+    
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="table-card" style="max-width:720px;">
+    <form method="POST" action="<%= post.id ? `/admin/cms/blog/${post.id}/editar` : '/admin/cms/blog/nuevo' %>" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <div class="mb-3">
+            <label class="form-label">Título *</label>
+            <input type="text" name="title" class="form-control" value="<%= post.title || '' %>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Autor</label>
+            <input type="text" name="author" class="form-control" value="<%= post.author || 'Moquegua Soft' %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Imagen destacada</label>
+            <% if (post.image) { %><img src="<%= post.image %>" class="thumb-preview d-block mb-2" alt=""><% } %>
+            <input type="file" name="image" accept="image/*" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Resumen</label>
+            <textarea name="excerpt" class="form-control" rows="2"><%= post.excerpt || '' %></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Contenido (admite HTML simple: &lt;p&gt;, &lt;b&gt;, &lt;a&gt;...)</label>
+            <textarea name="content" class="form-control" rows="8"><%= post.content || '' %></textarea>
+        </div>
+        <% if (post.id) { %>
+        <div class="form-check mb-3">
+            <input type="checkbox" name="active" class="form-check-input" id="postActive" <%= post.active ? 'checked' : '' %>>
+            <label class="form-check-label" for="postActive">Publicado</label>
+        </div>
+        <% } %>
+        <button class="btn btn-ms-primary">Guardar</button>
+        <a href="/admin/cms/blog" class="btn btn-outline-secondary">Cancelar</a>
+    </form>
+</div>
+
+<%- include('../partials/shell-end') %>

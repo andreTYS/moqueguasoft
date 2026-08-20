@@ -1,0 +1,35 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<%- include('../partials/page-header', { pageHeaderTitle: 'Equipo' }) %>
+
+<section class="section">
+    <div class="container">
+        <div class="section-head section-head--center mx-auto reveal">
+            <div class="kicker" style="justify-content:center;">Nuestro equipo</div>
+            <h2>Conoce a las personas de Moquegua Soft</h2>
+        </div>
+        <div class="team-grid">
+            <% team.forEach((t, i) => { %>
+            <div class="team-card reveal reveal--<%= (i % 6) + 1 %>">
+                <% if (media.isUploaded(t.photo)) { %>
+                    <div class="avatar"><img src="<%= t.photo %>" alt="<%= t.name %>"></div>
+                <% } else { %>
+                    <div class="avatar" style="background:<%- media.gradientFor(t.name) %>"><%= media.initials(t.name) %></div>
+                <% } %>
+                <h3><%= t.name %></h3>
+                <div class="role"><%= t.role %></div>
+                <% if (t.facebook || t.twitter || t.instagram || t.linkedin) { %>
+                <div class="team-card__social">
+                    <% if (t.facebook) { %><a href="<%= t.facebook %>"><i class="fab fa-facebook-f"></i></a><% } %>
+                    <% if (t.twitter) { %><a href="<%= t.twitter %>"><i class="fab fa-twitter"></i></a><% } %>
+                    <% if (t.instagram) { %><a href="<%= t.instagram %>"><i class="fab fa-instagram"></i></a><% } %>
+                    <% if (t.linkedin) { %><a href="<%= t.linkedin %>"><i class="fab fa-linkedin-in"></i></a><% } %>
+                </div>
+                <% } %>
+            </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<%- include('../partials/footer') %>

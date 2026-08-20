@@ -1,0 +1,42 @@
+<%- include('../partials/head') %>
+<%- include('../partials/shell-start') %>
+
+<div class="table-card" style="max-width:720px;">
+    <form method="POST" action="/admin/cms/textos">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+        <h6 class="text-secondary text-uppercase mb-3">Página de inicio</h6>
+        <div class="mb-3">
+            <label class="form-label">Título de la sección "Sobre nosotros"</label>
+            <input type="text" name="home_about_title" class="form-control" value="<%= home.about_title || '' %>">
+        </div>
+        <div class="mb-4">
+            <label class="form-label">Texto de la sección "Sobre nosotros"</label>
+            <textarea name="home_about_body" class="form-control" rows="3"><%= home.about_body || '' %></textarea>
+        </div>
+
+        <h6 class="text-secondary text-uppercase mb-3">Página Nosotros</h6>
+        <div class="mb-3">
+            <label class="form-label">Título de introducción</label>
+            <input type="text" name="about_intro_title" class="form-control" value="<%= about.intro_title || '' %>">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Texto de introducción</label>
+            <textarea name="about_intro_body" class="form-control" rows="3"><%= about.intro_body || '' %></textarea>
+        </div>
+        <div class="mb-4">
+            <label class="form-label">Misión</label>
+            <textarea name="about_mission" class="form-control" rows="2"><%= about.mission || '' %></textarea>
+        </div>
+
+        <h6 class="text-secondary text-uppercase mb-3">Página Contacto</h6>
+        <div class="mb-3">
+            <label class="form-label">Texto introductorio</label>
+            <textarea name="contact_intro" class="form-control" rows="2"><%= contact.intro || '' %></textarea>
+        </div>
+
+        <button class="btn btn-ms-primary">Guardar cambios</button>
+    </form>
+</div>
+
+<%- include('../partials/shell-end') %>
