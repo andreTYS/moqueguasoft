@@ -3,6 +3,7 @@
 
 <!-- Hero -->
 <section class="hero">
+    <img class="hero__photo" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=60" alt="" loading="lazy" onerror="this.remove()">
     <div class="hero__blob hero__blob--a"></div>
     <div class="hero__blob hero__blob--b"></div>
     <div class="hero__grain"></div>
@@ -122,7 +123,7 @@
             <% projects.forEach((p, i) => { %>
             <div class="work-card reveal reveal--<%= (i % 6) + 1 %>">
                 <div class="work-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
-                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
+                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } else { %><img src="<%= media.stockForProject(p.category, i) %>" alt="<%= p.title %>" loading="lazy" onerror="this.remove()"><% } %>
                     <i class="fas fa-diagram-project"></i>
                     <span class="work-card__tag"><%= p.category %></span>
                 </div>
@@ -214,7 +215,7 @@
             <% posts.forEach((p, i) => { %>
             <div class="post-card reveal reveal--<%= (i % 6) + 1 %>">
                 <div class="post-card__cover <%= media.isUploaded(p.image) ? '' : 'grad-' + ((i % 6) + 1) %>">
-                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } %>
+                    <% if (media.isUploaded(p.image)) { %><img src="<%= p.image %>" alt="<%= p.title %>"><% } else { %><img src="<%= media.stockForBlog(i) %>" alt="<%= p.title %>" loading="lazy" onerror="this.remove()"><% } %>
                     <i class="fas fa-newspaper"></i>
                 </div>
                 <div class="post-card__body">
