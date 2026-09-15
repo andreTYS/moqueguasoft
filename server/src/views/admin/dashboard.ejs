@@ -17,7 +17,7 @@
     <div class="col-md-3 col-6">
         <div class="stat-card">
             <div class="text-muted small">Balance</div>
-            <div class="value" style="color: <%= balance >= 0 ? '#1a9e5c' : '#c0392b' %>">S/ <%= balance.toFixed(2) %></div>
+            <div class="value" style="color: <%= balance >= 0 ? '#1fa971' : '#d64545' %>">S/ <%= balance.toFixed(2) %></div>
         </div>
     </div>
     <div class="col-md-3 col-6">
@@ -77,8 +77,8 @@
         data: {
             labels: allMonths,
             datasets: [
-                { label: 'Ingresos', backgroundColor: '#0b2545', data: allMonths.map(m => incomeMap[m] || 0) },
-                { label: 'Gastos', backgroundColor: '#f2a71b', data: allMonths.map(m => expenseMap[m] || 0) },
+                { label: 'Ingresos', backgroundColor: '#1fa971', data: allMonths.map(m => incomeMap[m] || 0) },
+                { label: 'Gastos', backgroundColor: '#1d5fbf', data: allMonths.map(m => expenseMap[m] || 0) },
             ],
         },
         options: { responsive: true, scales: { y: { beginAtZero: true } } },

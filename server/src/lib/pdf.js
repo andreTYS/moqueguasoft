@@ -7,14 +7,14 @@ function renderInvoicePdf(res, { invoice, client, project, settings }) {
     const doc = new PDFDocument({ margin: 50, size: 'A4' });
     doc.pipe(res);
 
-    doc.fillColor('#0b2545').fontSize(20).text(settings.site_name || 'Moquegua Soft', { continued: false });
+    doc.fillColor('#0a2a52').fontSize(20).text(settings.site_name || 'Moquegua Soft', { continued: false });
     doc.fillColor('#6c7a89').fontSize(10)
         .text(settings.address || '')
         .text(settings.phone || '')
         .text(settings.email || '');
 
     doc.moveDown(1.5);
-    doc.fillColor('#0b2545').fontSize(16).text(`Comprobante ${invoice.number}`, { align: 'right' });
+    doc.fillColor('#0a2a52').fontSize(16).text(`Comprobante ${invoice.number}`, { align: 'right' });
     doc.fillColor('#6c7a89').fontSize(10).text(`Fecha de emisión: ${invoice.issue_date}`, { align: 'right' });
     doc.text(`Estado: ${invoice.status}`, { align: 'right' });
 
@@ -22,7 +22,7 @@ function renderInvoicePdf(res, { invoice, client, project, settings }) {
     doc.strokeColor('#e2e6ea').moveTo(50, doc.y).lineTo(545, doc.y).stroke();
     doc.moveDown(0.8);
 
-    doc.fillColor('#0b2545').fontSize(12).text('Cliente', { underline: true });
+    doc.fillColor('#0a2a52').fontSize(12).text('Cliente', { underline: true });
     doc.fillColor('#333').fontSize(11)
         .text(client ? client.name : 'Cliente no especificado')
         .text(client && client.company ? client.company : '')
@@ -31,7 +31,7 @@ function renderInvoicePdf(res, { invoice, client, project, settings }) {
 
     if (project) {
         doc.moveDown(0.5);
-        doc.fillColor('#0b2545').fontSize(12).text('Proyecto', { underline: true });
+        doc.fillColor('#0a2a52').fontSize(12).text('Proyecto', { underline: true });
         doc.fillColor('#333').fontSize(11).text(project.name);
     }
 
@@ -40,7 +40,7 @@ function renderInvoicePdf(res, { invoice, client, project, settings }) {
     doc.moveDown(0.8);
 
     const tableTop = doc.y;
-    doc.fillColor('#0b2545').fontSize(11)
+    doc.fillColor('#0a2a52').fontSize(11)
         .text('Concepto', 50, tableTop, { width: 350 })
         .text('Monto', 420, tableTop, { width: 125, align: 'right' });
     doc.moveDown(0.5);
@@ -55,7 +55,7 @@ function renderInvoicePdf(res, { invoice, client, project, settings }) {
     doc.strokeColor('#e2e6ea').moveTo(50, doc.y).lineTo(545, doc.y).stroke();
     doc.moveDown(0.5);
 
-    doc.fillColor('#0b2545').fontSize(13)
+    doc.fillColor('#0a2a52').fontSize(13)
         .text(`Total: ${invoice.currency} ${invoice.amount.toFixed(2)}`, { align: 'right' });
 
     doc.moveDown(3);
