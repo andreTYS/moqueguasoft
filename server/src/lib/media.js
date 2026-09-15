@@ -3,12 +3,12 @@
 // una imagen real desde el CMS (esas viven en /uploads/...).
 
 const GRADIENTS = [
-    ['#ff5630', '#ff9a3d'],
-    ['#6d5bd0', '#a78bfa'],
-    ['#0ea5a3', '#5eead4'],
-    ['#2563eb', '#60a5fa'],
-    ['#ff5630', '#6d5bd0'],
-    ['#d946ef', '#f472b6'],
+    ['#1d5fbf', '#60a5fa'],
+    ['#ffb800', '#ffd54f'],
+    ['#1fa971', '#5eead4'],
+    ['#0a2a52', '#1d5fbf'],
+    ['#1fa971', '#a3e635'],
+    ['#1d5fbf', '#ffb800'],
 ];
 
 function isUploaded(p) {

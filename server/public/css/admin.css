@@ -1,6 +1,8 @@
 :root {
-    --ms-primary: #0b2545;
-    --ms-secondary: #f2a71b;
+    --ms-primary: #0a2a52;
+    --ms-secondary: #ffb800;
+    --ms-secondary-ink: #17324f;
+    --ms-green: #1fa971;
 }
 body { background: #f4f6f9; font-family: 'Inter', Arial, sans-serif; }
 
@@ -51,5 +53,5 @@ body { background: #f4f6f9; font-family: 'Inter', Arial, sans-serif; }
     padding: 20px;
 }
 .btn-ms-primary { background: var(--ms-primary); border-color: var(--ms-primary); color: #fff; }
-.btn-ms-primary:hover { background: #071a33; color: #fff; }
+.btn-ms-primary:hover { background: #071c38; color: #fff; }
 .thumb-preview { width: 60px; height: 60px; object-fit: cover; border-radius: 6px; }
